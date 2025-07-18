@@ -15,6 +15,7 @@ Actualizaciones:
   - [2025-07-18] Optimización para móviles, estructura en columnas adaptables, tipografía central y semántica.
   - [2025-07-18] Diseño responsivo optimizado para móviles. Layout tipo cards apiladas con imagen circular y citas.
   - [2025-07-18] Estructura optimizada para móviles con campos apilados, diseño limpio y etiquetas semánticas.
+  - [2025-07-18] Footer rediseñado con estructura semántica, responsiva y moderna.
 -->
 
 <!DOCTYPE html>
@@ -220,42 +221,47 @@ Actualizaciones:
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 text-gray-300 py-10">
-        <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-3 gap-8">
+    <footer class="bg-gray-800 text-gray-300 py-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-8 text-sm">
 
-            <!-- Marca -->
+            <!-- Información general -->
             <div>
-                <h3 class="text-xl font-bold text-white mb-2">Restaurante</h3>
-                <p class="text-sm text-gray-400">
-                    Cocina con alma y sabor. Te esperamos siempre.
-                </p>
+                <h3 class="text-lg font-semibold text-white mb-3">Restaurante Delicia</h3>
+                <p>Sabores que conquistan. Visítanos y vive una experiencia culinaria inolvidable.</p>
             </div>
 
-            <!-- Enlaces -->
-            <div>
-                <h4 class="text-sm font-semibold text-white mb-2">Enlaces</h4>
-                <ul class="space-y-1">
-                    <li><a href="#inicio" class="hover:text-red-500 transition">Inicio</a></li>
-                    <li><a href="#menu" class="hover:text-red-500 transition">Menú</a></li>
-                    <li><a href="#nosotros" class="hover:text-red-500 transition">Nosotros</a></li>
-                    <li><a href="#contacto" class="hover:text-red-500 transition">Contacto</a></li>
+            <!-- Enlaces rápidos -->
+            <nav>
+                <h4 class="text-white font-semibold mb-3">Navegación</h4>
+                <ul class="space-y-2">
+                    <li><a href="#inicio" class="hover:text-white transition">Inicio</a></li>
+                    <li><a href="#menu" class="hover:text-white transition">Menú</a></li>
+                    <li><a href="#nosotros" class="hover:text-white transition">Nosotros</a></li>
+                    <li><a href="#contacto" class="hover:text-white transition">Contacto</a></li>
                 </ul>
-            </div>
+            </nav>
 
-            <!-- Redes Sociales -->
+            <!-- Redes sociales / contacto -->
             <div>
-                <h4 class="text-sm font-semibold text-white mb-2">Síguenos</h4>
-                <div class="flex space-x-4 mt-2">
-                    <a href="#" target="_blank" class="hover:text-red-500 text-xl"><i class="fab fa-facebook"></i></a>
-                    <a href="#" target="_blank" class="hover:text-red-500 text-xl"><i class="fab fa-instagram"></i></a>
-                    <a href="#" target="_blank" class="hover:text-red-500 text-xl"><i class="fab fa-whatsapp"></i></a>
+                <h4 class="text-white font-semibold mb-3">Contáctanos</h4>
+                <p>Email: info@delicia.com</p>
+                <p>Tel: +57 300 123 4567</p>
+                <div class="flex space-x-4 mt-3">
+                    <a href="#" class="hover:text-white transition" aria-label="Facebook"><i
+                            class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="hover:text-white transition" aria-label="Instagram"><i
+                            class="fab fa-instagram"></i></a>
+                    <a href="#" class="hover:text-white transition" aria-label="Twitter"><i
+                            class="fab fa-twitter"></i></a>
                 </div>
             </div>
+
         </div>
 
-        <!-- Línea inferior -->
-        <div class="mt-10 text-center text-sm text-gray-500 border-t border-gray-700 pt-6">
-            &copy; 2025 Restaurante. Desarrollado por <span class="text-red-500 font-semibold">Up Develop</span>.
+        <!-- Créditos -->
+        <div class="text-center text-gray-500 mt-10 text-xs">
+            © 2025 Restaurante Delicia. Todos los derechos reservados. Desarrollado por <span
+                class="text-red-500 font-semibold"><a href="https://updevelop.com.co">Up Develop</a></span>
         </div>
     </footer>
 
