@@ -13,11 +13,6 @@ Este archivo contiene un registro detallado de todos los cambios significativos 
 - Archivo `README.md` con objetivo, tecnologías y despliegue.
 - Carpetas iniciales: `css`, `js`, `assets/img`, `assets/icons`.
 - Archivo base: `index.html`, `styles.css`, `main.js`, `.gitignore`.
+- Creación del archivo `index.html` con estructura base: Tailwind CDN, navbar, sección Hero y scroll suave.
 
 ---
-
-### Próximos pasos
-
-- Estructurar layout de `index.html` con Tailwind.
-- Implementar navbar y sección hero.
-- Configurar ScrollReveal para animaciones suaves.

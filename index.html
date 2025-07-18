@@ -1,0 +1,73 @@
+<!--
+Autor: Sergio Silva
+Fecha: 2025-07-18
+Descripción: Archivo principal HTML del sitio web del Restaurante. Contiene la estructura base del proyecto, incluyendo integración con Tailwind CSS, navbar inicial y secciones listas para desarrollo.
+Actualizaciones:
+  - [2025-07-17] Creación del archivo y estructura inicial.
+-->
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <!-- Metadatos -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- SEO Básico -->
+    <title>Restaurante | Up Develop</title>
+    <meta name="description"
+        content="Sitio web moderno y responsive para restaurante. Menú, ubicación, contacto y más.">
+    <meta name="keywords" content="restaurante, comida, menú, reservas, sitio web">
+    <meta name="author" content="Sergio Silva">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Íconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+        integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Favicon -->
+    <link rel="icon" href="assets/icons/favicon.png" type="image/png" />
+
+</head>
+
+<body class="bg-white text-gray-800 scroll-smooth">
+
+    <!-- Navbar -->
+    <header class="bg-white shadow-md fixed w-full top-0 z-50">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <h1 class="text-xl font-bold text-red-600">Restaurante</h1>
+            <ul class="flex space-x-6 text-sm font-medium">
+                <li><a href="#inicio" class="hover:text-red-600 transition">Inicio</a></li>
+                <li><a href="#menu" class="hover:text-red-600 transition">Menú</a></li>
+                <li><a href="#nosotros" class="hover:text-red-600 transition">Nosotros</a></li>
+                <li><a href="#contacto" class="hover:text-red-600 transition">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Espacio para compensar navbar fija -->
+    <div class="h-20"></div>
+
+    <!-- Sección Hero -->
+    <section id="inicio" class="w-full h-screen flex items-center justify-center bg-gray-100">
+        <!--
+      Descripción: Sección de bienvenida al restaurante.
+      Próximamente aquí se incluirá imagen destacada, título y botón CTA.
+    -->
+        <div class="text-center px-6">
+            <h2 class="text-4xl font-bold mb-4">Bienvenido a nuestro restaurante</h2>
+            <p class="text-lg text-gray-600">Deléitate con nuestros platos únicos</p>
+        </div>
+    </section>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="js/main.js"></script>
+
+</body>
+
+</html>
