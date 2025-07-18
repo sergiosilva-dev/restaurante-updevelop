@@ -12,6 +12,7 @@ Actualizaciones:
   - [2025-07-18] Ajuste del Navbar para optimización móvil y desktop.
   - [2025-07-18] Ajustes responsivos en sección hero, distribución y tipografías.
   - [2025-07-18] Optimización para dispositivos móviles con estructura responsive y texto centrado.
+  - [2025-07-18] Optimización para móviles, estructura en columnas adaptables, tipografía central y semántica.
 -->
 
 <!DOCTYPE html>
@@ -118,23 +119,29 @@ Actualizaciones:
 
     <!-- Sección Nosotros -->
     <section id="nosotros" class="py-20 bg-gray-50">
-        <div class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center gap-10 fade-in">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Sobre Nosotros</h2>
 
-            <div class="md:w-1/2">
-                <img src="assets/img/nosotros.jpg" alt="Nuestro equipo"
-                    class="rounded-lg shadow-lg object-cover w-full h-80 md:h-96">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <!-- Imagen -->
+                <figure class="w-full h-auto">
+                    <img src="assets/img/nosotros.jpg" alt="Nuestro equipo"
+                        class="w-full h-auto object-cover rounded shadow">
+                </figure>
+
+                <!-- Texto -->
+                <article>
+                    <p class="text-gray-700 text-justify leading-relaxed">
+                        Somos un restaurante con pasión por la buena comida y el servicio excepcional. Nuestro equipo
+                        está comprometido con ofrecer una experiencia inolvidable a cada cliente, desde las recetas
+                        hasta la atención.
+                    </p>
+                    <p class="text-gray-700 mt-4 text-justify leading-relaxed">
+                        Con ingredientes frescos, recetas tradicionales y un ambiente acogedor, buscamos ser tu lugar
+                        favorito para compartir momentos especiales.
+                    </p>
+                </article>
             </div>
-
-            <div class="md:w-1/2">
-                <h2 class="text-3xl font-bold text-gray-800 mb-4">Sobre Nosotros</h2>
-                <p class="text-gray-600 text-lg leading-relaxed">
-                    Somos un restaurante con alma, dedicado a brindar experiencias culinarias únicas que combinan
-                    tradición, frescura y pasión en cada plato.
-                    Nuestro compromiso es ofrecer comida de calidad, ambiente acogedor y un servicio excepcional para
-                    nuestros comensales.
-                </p>
-            </div>
-
         </div>
     </section>
 
