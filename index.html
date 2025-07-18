@@ -11,6 +11,7 @@ Actualizaciones:
   - [2025-07-18] Footer añadido con estructura visual, enlaces y redes sociales.
   - [2025-07-18] Ajuste del Navbar para optimización móvil y desktop.
   - [2025-07-18] Ajustes responsivos en sección hero, distribución y tipografías.
+  - [2025-07-18] Optimización para dispositivos móviles con estructura responsive y texto centrado.
 -->
 
 <!DOCTYPE html>
@@ -86,31 +87,31 @@ Actualizaciones:
 
     <!-- Sección Menú -->
     <section id="menu" class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Nuestro Menú</h2>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl font-bold text-gray-800 mb-12">Nuestro Menú</h2>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Categoría 1 -->
-                <div class="fade-in bg-gray-100 p-6 rounded-lg shadow hover:shadow-lg transition">
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+                <!-- Entradas -->
+                <article class="fade-in bg-gray-100 p-6 rounded-lg shadow hover:shadow-lg transition">
                     <img src="assets/img/entradas.jpg" alt="Entradas" class="w-full h-40 object-cover rounded mb-4">
                     <h3 class="text-xl font-semibold text-red-600 mb-2">Entradas</h3>
                     <p class="text-gray-600">Deliciosos aperitivos para comenzar tu experiencia gastronómica.</p>
-                </div>
+                </article>
 
-                <!-- Categoría 2 -->
-                <div class="fade-in bg-gray-100 p-6 rounded-lg shadow hover:shadow-lg transition">
+                <!-- Platos fuertes -->
+                <article class="fade-in bg-gray-100 p-6 rounded-lg shadow hover:shadow-lg transition">
                     <img src="assets/img/plato-fuerte.jpg" alt="Platos Fuertes"
                         class="w-full h-40 object-cover rounded mb-4">
                     <h3 class="text-xl font-semibold text-red-600 mb-2">Platos Fuertes</h3>
-                    <p class="text-gray-600">Los sabores principales de nuestra cocina, preparados con calidad.</p>
-                </div>
+                    <p class="text-gray-600">Sabores principales preparados con calidad y dedicación.</p>
+                </article>
 
-                <!-- Categoría 3 -->
-                <div class="fade-in bg-gray-100 p-6 rounded-lg shadow hover:shadow-lg transition">
+                <!-- Postres -->
+                <article class="fade-in bg-gray-100 p-6 rounded-lg shadow hover:shadow-lg transition">
                     <img src="assets/img/postres.jpg" alt="Postres" class="w-full h-40 object-cover rounded mb-4">
                     <h3 class="text-xl font-semibold text-red-600 mb-2">Postres</h3>
-                    <p class="text-gray-600">Endulza tu visita con nuestras opciones irresistibles.</p>
-                </div>
+                    <p class="text-gray-600">Dulces irresistibles para cerrar con broche de oro.</p>
+                </article>
             </div>
         </div>
     </section>
