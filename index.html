@@ -9,6 +9,8 @@ Actualizaciones:
   - [2025-07-18] Sección añadida con estructura en grid y estilo visual moderno.
   - [2025-07-18] Creación de la sección Contacto con datos, formulario y llamada a la acción.
   - [2025-07-18] Footer añadido con estructura visual, enlaces y redes sociales.
+  - [2025-07-18] Ajuste del Navbar para optimización móvil y desktop.
+  - [2025-07-18] Ajustes responsivos en sección hero, distribución y tipografías.
 -->
 
 <!DOCTYPE html>
@@ -41,26 +43,43 @@ Actualizaciones:
 
 <body class="bg-white text-gray-800 scroll-smooth">
 
-    <!-- Navbar -->
+    <!-- Navbar responsive -->
     <header class="bg-white shadow-md fixed w-full top-0 z-50">
         <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
             <h1 class="text-xl font-bold text-red-600">Restaurante</h1>
-            <ul class="flex space-x-6 text-sm font-medium">
+
+            <!-- Menu normal -->
+            <ul class="hidden md:flex space-x-6 text-sm font-medium">
                 <li><a href="#inicio" class="hover:text-red-600 transition">Inicio</a></li>
                 <li><a href="#menu" class="hover:text-red-600 transition">Menú</a></li>
                 <li><a href="#nosotros" class="hover:text-red-600 transition">Nosotros</a></li>
                 <li><a href="#contacto" class="hover:text-red-600 transition">Contacto</a></li>
             </ul>
+
+            <!-- Botón hamburguesa -->
+            <button id="menuToggle" class="md:hidden text-2xl text-red-600 focus:outline-none">
+                <i class="fas fa-bars"></i>
+            </button>
         </nav>
+
+        <!-- Menú móvil -->
+        <div id="mobileMenu" class="md:hidden hidden px-4 pb-4">
+            <ul class="flex flex-col space-y-2 text-sm font-medium">
+                <li><a href="#inicio" class="hover:text-red-600 transition block">Inicio</a></li>
+                <li><a href="#menu" class="hover:text-red-600 transition block">Menú</a></li>
+                <li><a href="#nosotros" class="hover:text-red-600 transition block">Nosotros</a></li>
+                <li><a href="#contacto" class="hover:text-red-600 transition block">Contacto</a></li>
+            </ul>
+        </div>
     </header>
 
     <!-- Espacio para compensar navbar fija -->
     <div class="h-20"></div>
 
     <!-- Sección Hero -->
-    <section id="inicio" class="w-full h-screen flex items-center justify-center bg-gray-100">
-        <div class="text-center px-6">
-            <h2 class="text-4xl font-bold mb-4">Bienvenido a nuestro restaurante</h2>
+    <section id="inicio" class="w-full min-h-screen flex items-center justify-center bg-gray-100 text-center px-4">
+        <div>
+            <h2 class="text-3xl md:text-5xl font-bold mb-4">Bienvenido a nuestro restaurante</h2>
             <p class="text-lg text-gray-600">Deléitate con nuestros platos únicos</p>
         </div>
     </section>

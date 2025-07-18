@@ -4,6 +4,7 @@ Fecha: 2025-07-17
 Descripción: Archivo JavaScript principal del sitio web del Restaurante. Controla animaciones, interacciones básicas y funciones del sitio.
 Actualizaciones:
   - [2025-07-17] Creación del archivo con integración básica de ScrollReveal.
+  - [2025-07-18] Implementación de menú móvil toggle.
 */
 
 // Configuración básica de ScrollReveal
@@ -31,4 +32,12 @@ window.addEventListener("scroll", () => {
       link.classList.remove("text-red-600");
     }
   });
+});
+
+// Menú móvil toggle
+const toggleBtn = document.getElementById("menuToggle");
+const mobileMenu = document.getElementById("mobileMenu");
+
+toggleBtn.addEventListener("click", () => {
+  mobileMenu.classList.toggle("hidden");
 });

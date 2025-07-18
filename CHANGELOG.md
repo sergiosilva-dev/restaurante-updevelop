@@ -24,3 +24,5 @@ Este archivo contiene un registro detallado de todos los cambios significativos 
 - [2025-07-18] Sección “Opiniones de Clientes” añadida con testimonios, avatars y calificación en estrellas.
 - [2025-07-18] Sección “Contacto” añadida con información del restaurante, formulario de contacto y botón de reserva por WhatsApp.
 - [2025-07-18] Footer añadido con estructura visual, enlaces internos, redes sociales y créditos de autor.
+- [2025-07-18] Navbar adaptado para dispositivos móviles con toggle (hamburguesa) y menú vertical.
+- [2025-07-18] Ajustes responsivos en sección hero, distribución y tipografías.
