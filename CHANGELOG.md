@@ -28,3 +28,4 @@ Este archivo contiene un registro detallado de todos los cambios significativos 
 - [2025-07-18] Ajustes responsivos en sección hero, distribución y tipografías.
 - [2025-07-18] Optimización de la sección “Menú” para mobile-first con grillas fluidas, texto centrado y estructura semántica.
 - [2025-07-18] Sección “Nosotros” optimizada para móviles: layout en columnas adaptables, imagen responsiva, texto centrado y justificado.
+- [2025-07-18] Sección Testimonios optimizada para móviles: tarjetas verticales, imágenes circulares, texto limpio y responsivo.

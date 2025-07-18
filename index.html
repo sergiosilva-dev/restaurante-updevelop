@@ -13,6 +13,7 @@ Actualizaciones:
   - [2025-07-18] Ajustes responsivos en sección hero, distribución y tipografías.
   - [2025-07-18] Optimización para dispositivos móviles con estructura responsive y texto centrado.
   - [2025-07-18] Optimización para móviles, estructura en columnas adaptables, tipografía central y semántica.
+  - [2025-07-18] Diseño responsivo optimizado para móviles. Layout tipo cards apiladas con imagen circular y citas.
 -->
 
 <!DOCTYPE html>
@@ -145,36 +146,38 @@ Actualizaciones:
         </div>
     </section>
 
-    <!-- Sección Opiniones -->
-    <section id="opiniones" class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-4 text-center">
-            <h2 class="text-3xl font-bold text-gray-800 mb-12">Opiniones de nuestros clientes</h2>
+    <!-- Sección Testimonios -->
+    <section id="testimonios" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl font-bold text-gray-800 mb-12">Lo que dicen nuestros clientes</h2>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Opinión 1 -->
-                <div class="fade-in bg-gray-50 p-6 rounded-lg shadow hover:shadow-lg transition">
-                    <img src="assets/img/avatar1.jpg" alt="Cliente 1" class="w-16 h-16 rounded-full mx-auto mb-4">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Testimonio 1 -->
+                <article class="bg-gray-50 p-6 rounded-lg shadow-md text-left">
+                    <img src="assets/img/laura-gomez.jpg" alt="Laura Gómez"
+                        class="w-16 h-16 rounded-full mx-auto mb-4 object-cover">
                     <h3 class="text-lg font-semibold text-red-600">Laura Gómez</h3>
-                    <div class="text-yellow-400 mb-2">★★★★★</div>
-                    <p class="text-gray-600 text-sm">La comida es deliciosa y el ambiente súper acogedor. Volveré sin
-                        duda.</p>
-                </div>
+                    <p class="text-gray-600 text-sm mt-2">"El ambiente es encantador y la comida espectacular.
+                        Definitivamente volveré pronto."</p>
+                </article>
 
-                <!-- Opinión 2 -->
-                <div class="fade-in bg-gray-50 p-6 rounded-lg shadow hover:shadow-lg transition">
-                    <img src="assets/img/avatar2.jpg" alt="Cliente 2" class="w-16 h-16 rounded-full mx-auto mb-4">
+                <!-- Testimonio 2 -->
+                <article class="bg-gray-50 p-6 rounded-lg shadow-md text-left">
+                    <img src="assets/img/carlos-mendez.jpg" alt="Carlos Méndez"
+                        class="w-16 h-16 rounded-full mx-auto mb-4 object-cover">
                     <h3 class="text-lg font-semibold text-red-600">Carlos Méndez</h3>
-                    <div class="text-yellow-400 mb-2">★★★★☆</div>
-                    <p class="text-gray-600 text-sm">Excelente atención y sabores únicos. Muy recomendado.</p>
-                </div>
+                    <p class="text-gray-600 text-sm mt-2">"Una experiencia única. Platos exquisitos y atención de
+                        primera."</p>
+                </article>
 
-                <!-- Opinión 3 -->
-                <div class="fade-in bg-gray-50 p-6 rounded-lg shadow hover:shadow-lg transition">
-                    <img src="assets/img/avatar3.jpg" alt="Cliente 3" class="w-16 h-16 rounded-full mx-auto mb-4">
+                <!-- Testimonio 3 -->
+                <article class="bg-gray-50 p-6 rounded-lg shadow-md text-left">
+                    <img src="assets/img/valentina-ruiz.jpg" alt="Valentina Ruiz"
+                        class="w-16 h-16 rounded-full mx-auto mb-4 object-cover">
                     <h3 class="text-lg font-semibold text-red-600">Valentina Ruiz</h3>
-                    <div class="text-yellow-400 mb-2">★★★★★</div>
-                    <p class="text-gray-600 text-sm">Una experiencia gastronómica completa. Todo impecable.</p>
-                </div>
+                    <p class="text-gray-600 text-sm mt-2">"Recomiendo este restaurante a todos. Calidad y sabor en cada
+                        bocado."</p>
+                </article>
             </div>
         </div>
     </section>
