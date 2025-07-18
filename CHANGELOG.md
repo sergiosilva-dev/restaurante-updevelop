@@ -20,3 +20,4 @@ Este archivo contiene un registro detallado de todos los cambios significativos 
 ---
 
 - [2025-07-18] Agregada sección “Menú” en index.html con estructura responsive, animaciones fade-in y tarjetas visuales.
+- [2025-07-18] Agregada sección “Nosotros” en index.html con diseño visual, imagen decorativa y contenido institucional.
