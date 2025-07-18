@@ -4,7 +4,7 @@ Este archivo contiene un registro detallado de todos los cambios significativos 
 
 ---
 
-## [2025-07-18] - 🟢 Versión incial
+## [2025-07-17] - 🟢 Versión incial
 
 ### Agregado
 
