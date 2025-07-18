@@ -18,3 +18,5 @@ Este archivo contiene un registro detallado de todos los cambios significativos 
 - Creación del archivo `main.js` con integración inicial de ScrollReveal y función de scroll activo para navbar.
 
 ---
+
+- [2025-07-18] Agregada sección “Menú” en index.html con estructura responsive, animaciones fade-in y tarjetas visuales.
