@@ -23,3 +23,4 @@ Este archivo contiene un registro detallado de todos los cambios significativos 
 - [2025-07-18] Agregada sección “Nosotros” en index.html con diseño visual, imagen decorativa y contenido institucional.
 - [2025-07-18] Sección “Opiniones de Clientes” añadida con testimonios, avatars y calificación en estrellas.
 - [2025-07-18] Sección “Contacto” añadida con información del restaurante, formulario de contacto y botón de reserva por WhatsApp.
+- [2025-07-18] Footer añadido con estructura visual, enlaces internos, redes sociales y créditos de autor.
