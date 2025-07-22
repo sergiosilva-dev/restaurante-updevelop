@@ -16,6 +16,7 @@ Actualizaciones:
   - [2025-07-18] Diseño responsivo optimizado para móviles. Layout tipo cards apiladas con imagen circular y citas.
   - [2025-07-18] Estructura optimizada para móviles con campos apilados, diseño limpio y etiquetas semánticas.
   - [2025-07-18] Footer rediseñado con estructura semántica, responsiva y moderna.
+  - [2025-07-18] Implementado modo oscuro/claro con switch e íconos Font Awesome. Se guarda la preferencia del usuario en localStorage.
 -->
 
 <!DOCTYPE html>
@@ -34,8 +35,22 @@ Actualizaciones:
     <meta name="keywords" content="restaurante, comida, menú, reservas, sitio web">
     <meta name="author" content="Sergio Silva">
 
-    <!-- Tailwind CSS CDN -->
+    <!-- Carga Tailwind primero -->
     <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Ahora sí configura Tailwind -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        rojo: '#e3342f',
+                    },
+                },
+            },
+        }
+    </script>
 
     <!-- Íconos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
@@ -44,9 +59,12 @@ Actualizaciones:
     <!-- Favicon -->
     <link rel="icon" href="assets/icons/favicon.ico" type="image/x-icon" />
 
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 </head>
 
-<body class="bg-white text-gray-800 scroll-smooth">
+<body class="scroll-smooth">
 
     <!-- Navbar responsive -->
     <header class="bg-white shadow-md fixed w-full top-0 z-50">
@@ -64,6 +82,11 @@ Actualizaciones:
             <!-- Botón hamburguesa -->
             <button id="menuToggle" class="md:hidden text-2xl text-red-600 focus:outline-none">
                 <i class="fas fa-bars"></i>
+            </button>
+
+            <!-- Switch modo oscuro/claro -->
+            <button id="theme-toggle" aria-label="Cambiar tema" class="text-xl ml-4 transition-all hover:text-red-500">
+                <i id="theme-icon" class="fas fa-moon"></i>
             </button>
         </nav>
 
@@ -267,7 +290,7 @@ Actualizaciones:
 
     <!-- Scripts -->
     <script src="https://unpkg.com/scrollreveal"></script>
-    <script src="js/main.js"></script>
+    <script src="js/main.js" defer></script>
 
 </body>
 

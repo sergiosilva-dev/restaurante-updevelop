@@ -5,6 +5,7 @@ Descripción: Archivo JavaScript principal del sitio web del Restaurante. Contro
 Actualizaciones:
   - [2025-07-17] Creación del archivo con integración básica de ScrollReveal.
   - [2025-07-18] Implementación de menú móvil toggle.
+  - [2025-07-18] Implementado modo oscuro/claro con switch e íconos Font Awesome. Se guarda la preferencia del usuario en localStorage.
 */
 
 // Configuración básica de ScrollReveal
@@ -40,4 +41,31 @@ const mobileMenu = document.getElementById("mobileMenu");
 
 toggleBtn.addEventListener("click", () => {
   mobileMenu.classList.toggle("hidden");
+});
+
+// Cambiar tema y guardar preferencia
+document.addEventListener("DOMContentLoaded", () => {
+  const toggleBtn = document.getElementById("theme-toggle");
+  const themeIcon = document.getElementById("theme-icon");
+
+  // Aplicar tema guardado
+  if (localStorage.getItem("theme") === "dark") {
+    document.body.classList.add("dark");
+    themeIcon.classList.remove("fa-moon");
+    themeIcon.classList.add("fa-sun");
+  }
+
+  toggleBtn.addEventListener("click", () => {
+    document.body.classList.toggle("dark");
+
+    if (document.body.classList.contains("dark")) {
+      themeIcon.classList.remove("fa-moon");
+      themeIcon.classList.add("fa-sun");
+      localStorage.setItem("theme", "dark");
+    } else {
+      themeIcon.classList.remove("fa-sun");
+      themeIcon.classList.add("fa-moon");
+      localStorage.setItem("theme", "light");
+    }
+  });
 });

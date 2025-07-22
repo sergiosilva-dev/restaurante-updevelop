@@ -31,3 +31,4 @@ Este archivo contiene un registro detallado de todos los cambios significativos 
 - [2025-07-18] Sección Testimonios optimizada para móviles: tarjetas verticales, imágenes circulares, texto limpio y responsivo.
 - [2025-07-18] Sección Contacto optimizada para móvil: formulario limpio, campos bien espaciados, accesibles y listos para validación.
 - [2025-07-18] Footer optimizado: estructura responsiva en 3 columnas, información clara, enlaces útiles y redes sociales.
+- [2025-07-18] Implementado modo oscuro/claro con switch e íconos Font Awesome. Se guarda la preferencia del usuario en localStorage.

@@ -4,6 +4,7 @@ Fecha: 2025-07-17
 Descripción: Hoja de estilos personalizada del sitio web del Restaurante. Utilizada para añadir reglas CSS puras cuando Tailwind no cubre ciertos estilos.
 Actualizaciones:
   - [2025-07-17] Creación del archivo y documentación inicial.
+  - [2025-07-18] Implementado modo oscuro/claro con switch e íconos Font Awesome. Se guarda la preferencia del usuario en localStorage.
 */
 
 /* Animación personalizada: Fade in hacia arriba */
@@ -33,4 +34,32 @@ Actualizaciones:
 .btn-outline:hover {
   background-color: #dc2626;
   color: white;
+}
+
+/* Modo oscuro activado cuando el body tiene clase .dark */
+body {
+  background-color: #ffffff;
+  color: #1f2937;
+}
+
+body.dark {
+  background-color: #111827;
+  color: #f3f4f6;
+}
+
+body.dark header,
+body.dark footer,
+body.dark section {
+  background-color: #1f2937;
+}
+
+body.dark a {
+  color: #93c5fd;
+}
+
+body.dark input,
+body.dark textarea {
+  background-color: #374151;
+  color: #ffffff;
+  border-color: #4b5563;
 }
