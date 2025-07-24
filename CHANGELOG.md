@@ -53,3 +53,4 @@ Este archivo contiene un registro detallado de todos los cambios significativos 
 - [2025-07-24] Logo del restaurante agregado en formato `.png` con texto integrado y diseño profesional. Alineado visualmente con el header y compatible con modo claro/oscuro.
 - [2025-07-24] Implementados favicons para todas las plataformas (ico, png, apple-touch) y archivo `site.webmanifest` con soporte para instalación PWA.
 - [2025-07-24] Hero actualizado con Imágen y CTA
+- [2025-07-24] Fix en scroll navbar: validación de enlaces sin hash y secciones inexistentes para evitar errores en consola.

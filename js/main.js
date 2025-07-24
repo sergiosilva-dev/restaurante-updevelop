@@ -6,6 +6,7 @@ Actualizaciones:
   - [2025-07-17] Creación del archivo con integración básica de ScrollReveal.
   - [2025-07-18] Implementación de menú móvil toggle.
   - [2025-07-18] Implementado modo oscuro/claro con switch e íconos Font Awesome. Se guarda la preferencia del usuario en localStorage.
+  - [2025-07-24] Fix en scroll navbar: validación de enlaces sin hash y secciones inexistentes para evitar errores en consola.
 */
 
 // Configuración básica de ScrollReveal
@@ -23,7 +24,14 @@ window.addEventListener("scroll", () => {
   const fromTop = window.scrollY;
 
   links.forEach((link) => {
-    const section = document.querySelector(link.hash);
+    const hash = link.hash;
+
+    if (!hash) return;
+
+    const section = document.querySelector(hash);
+
+    if (!section) return;
+
     if (
       section.offsetTop <= fromTop + 80 &&
       section.offsetTop + section.offsetHeight > fromTop + 80

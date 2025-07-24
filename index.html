@@ -21,6 +21,7 @@ Actualizaciones:
   - [2025-07-24] Logo del restaurante agregado con texto integrado y diseño profesional.
   - [2025-07-24] Implementación de favicons para todas las plataformas (ico, png, apple-touch) y configuración PWA.
   - [2025-07-24] Mejora visual y estructural del hero.
+  - [2025-07-24] Se modifica footer profesional con 3 columnas (enlaces, contacto, redes sociales) y créditos. Totalmente responsivo y accesible.
 -->
 
 <!DOCTYPE html>
@@ -266,47 +267,44 @@ Actualizaciones:
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-800 text-gray-300 py-10">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-8 text-sm">
-
-            <!-- Información general -->
+    <footer class="bg-gray-900 text-white py-10 mt-20">
+        <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-3 gap-8">
+            <!-- Enlaces -->
             <div>
-                <h3 class="text-lg font-semibold text-white mb-3">Restaurante Delicia</h3>
-                <p>Sabores que conquistan. Visítanos y vive una experiencia culinaria inolvidable.</p>
+                <h3 class="text-xl font-semibold mb-4">Enlaces</h3>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="#inicio" class="hover:text-red-400 transition">Inicio</a></li>
+                    <li><a href="#menu" class="hover:text-red-400 transition">Menú</a></li>
+                    <li><a href="#nosotros" class="hover:text-red-400 transition">Nosotros</a></li>
+                    <li><a href="#contacto" class="hover:text-red-400 transition">Contacto</a></li>
+                </ul>
             </div>
 
-            <!-- Enlaces rápidos -->
-            <nav>
-                <h4 class="text-white font-semibold mb-3">Navegación</h4>
-                <ul class="space-y-2">
-                    <li><a href="#inicio" class="hover:text-white transition">Inicio</a></li>
-                    <li><a href="#menu" class="hover:text-white transition">Menú</a></li>
-                    <li><a href="#nosotros" class="hover:text-white transition">Nosotros</a></li>
-                    <li><a href="#contacto" class="hover:text-white transition">Contacto</a></li>
-                </ul>
-            </nav>
-
-            <!-- Redes sociales / contacto -->
+            <!-- Contacto -->
             <div>
-                <h4 class="text-white font-semibold mb-3">Contáctanos</h4>
-                <p>Email: info@delicia.com</p>
-                <p>Tel: +57 300 123 4567</p>
-                <div class="flex space-x-4 mt-3">
-                    <a href="#" class="hover:text-white transition" aria-label="Facebook"><i
-                            class="fab fa-facebook-f"></i></a>
-                    <a href="#" class="hover:text-white transition" aria-label="Instagram"><i
+                <h3 class="text-xl font-semibold mb-4">Contáctanos</h3>
+                <p class="text-sm">Calle 123, Bogotá, Colombia</p>
+                <p class="text-sm">Tel: +57 300 123 4567</p>
+                <p class="text-sm">Email: info@restaurante.com</p>
+            </div>
+
+            <!-- Redes sociales -->
+            <div>
+                <h3 class="text-xl font-semibold mb-4">Síguenos</h3>
+                <div class="flex space-x-4">
+                    <a href="#" aria-label="Facebook" class="hover:text-red-400 text-xl"><i
+                            class="fab fa-facebook"></i></a>
+                    <a href="#" aria-label="Instagram" class="hover:text-red-400 text-xl"><i
                             class="fab fa-instagram"></i></a>
-                    <a href="#" class="hover:text-white transition" aria-label="Twitter"><i
+                    <a href="#" aria-label="Twitter" class="hover:text-red-400 text-xl"><i
                             class="fab fa-twitter"></i></a>
                 </div>
             </div>
-
         </div>
 
-        <!-- Créditos -->
-        <div class="text-center text-gray-500 mt-10 text-xs">
-            © 2025 Restaurante Delicia. Todos los derechos reservados. Desarrollado por <span
-                class="text-red-500 font-semibold"><a href="https://updevelop.com.co">Up Develop</a></span>
+        <div class="mt-10 text-center text-sm text-gray-400">
+            © 2025 Restaurante. Todos los derechos reservados. Diseñado por <a href="https://updevelop.com.co"
+                class="text-red-500 hover:underline">Up Develop</a>.
         </div>
     </footer>
 
