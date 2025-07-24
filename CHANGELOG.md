@@ -50,3 +50,5 @@ Este archivo contiene un registro detallado de todos los cambios significativos 
   • Se crea y vincula correctamente el menú móvil para tablets y celulares.
   • Mejora visual en modo oscuro para íconos de navegación.
   • Ajustes responsivos y estructurales del navbar.
+- [2025-07-24] Logo del restaurante agregado en formato `.png` con texto integrado y diseño profesional. Alineado visualmente con el header y compatible con modo claro/oscuro.
+- [2025-07-24] Implementados favicons para todas las plataformas (ico, png, apple-touch) y archivo `site.webmanifest` con soporte para instalación PWA.

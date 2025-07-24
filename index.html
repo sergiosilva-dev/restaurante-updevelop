@@ -18,6 +18,8 @@ Actualizaciones:
   - [2025-07-18] Footer rediseñado con estructura semántica, responsiva y moderna.
   - [2025-07-18] Implementado modo oscuro/claro con switch e íconos Font Awesome. Se guarda la preferencia del usuario en localStorage.
   - [2025-07-24] Mejora visual y estructura del header.
+  - [2025-07-24] Logo del restaurante agregado con texto integrado y diseño profesional.
+  - [2025-07-24] Implementación de favicons para todas las plataformas (ico, png, apple-touch) y configuración PWA.
 -->
 
 <!DOCTYPE html>
@@ -57,8 +59,19 @@ Actualizaciones:
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
         integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    <!-- Favicon -->
-    <link rel="icon" href="assets/icons/favicon.ico" type="image/x-icon" />
+    <!-- Favicon y App Icons -->
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/icons/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/icons/apple-touch-icon.png">
+    <link rel="icon" href="assets/icons/favicon.ico" type="image/x-icon">
+    <link rel="manifest" href="site.webmanifest" crossorigin="use-credentials">
+
+    <!-- Meta adicionales para PWA y móviles -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="Restaurante">
+    <meta name="application-name" content="Restaurante">
+    <meta name="theme-color" content="#ffffff">
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -71,10 +84,9 @@ Actualizaciones:
     <header class="bg-white dark:bg-gray-900 shadow-md fixed w-full top-0 z-50">
         <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
             <!-- Logo y nombre -->
-            <div class="flex items-center">
-                <img src="assets/icons/logo.png" alt="Logo Restaurante" class="w-8 h-8 mr-2" />
-                <h1 class="text-xl font-bold text-red-600">Restaurante</h1>
-            </div>
+            <a href="#" class="flex items-center space-x-2">
+                <img src="assets/icons/logo.png" alt="Logo del Restaurante" class="h-12 w-auto" />
+            </a>
 
             <!-- Menú desktop -->
             <ul class="hidden md:flex space-x-6 text-sm font-medium">

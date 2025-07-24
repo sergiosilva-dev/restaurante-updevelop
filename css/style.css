@@ -5,6 +5,7 @@ Descripción: Hoja de estilos personalizada del sitio web del Restaurante. Utili
 Actualizaciones:
   - [2025-07-17] Creación del archivo y documentación inicial.
   - [2025-07-18] Implementado modo oscuro/claro con switch e íconos Font Awesome. Se guarda la preferencia del usuario en localStorage.
+  - [2025-07-24] Logo del restaurante agregado con texto integrado y diseño profesional.
 */
 
 /* Animación personalizada: Fade in hacia arriba */
@@ -68,4 +69,8 @@ body.dark .fa-bars,
 body.dark .fa-sun,
 body.dark .fa-moon {
   color: #f87171; /* rojo claro */
+}
+
+body.dark img[alt="Logo Restaurante"] {
+  filter: brightness(1.1) contrast(1.2);
 }
