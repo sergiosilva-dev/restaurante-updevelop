@@ -20,6 +20,7 @@ Actualizaciones:
   - [2025-07-24] Mejora visual y estructura del header.
   - [2025-07-24] Logo del restaurante agregado con texto integrado y diseño profesional.
   - [2025-07-24] Implementación de favicons para todas las plataformas (ico, png, apple-touch) y configuración PWA.
+  - [2025-07-24] Mejora visual y estructural del hero.
 -->
 
 <!DOCTYPE html>
@@ -120,10 +121,16 @@ Actualizaciones:
     </header>
 
     <!-- Sección Hero -->
-    <section id="inicio" class="w-full min-h-screen flex items-center justify-center bg-gray-100 text-center px-4">
-        <div>
-            <h2 class="text-3xl md:text-5xl font-bold mb-4">Bienvenido a nuestro restaurante</h2>
-            <p class="text-lg text-gray-600">Deléitate con nuestros platos únicos</p>
+    <section class="relative h-[80vh] bg-cover bg-center bg-no-repeat"
+        style="background-image: url('assets/img/hero.jpg');">
+        <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+            <div class="text-center text-white px-4">
+                <h1 class="text-4xl md:text-6xl font-bold mb-4">Sabores que despiertan tus sentidos</h1>
+                <p class="text-lg md:text-xl mb-6">Descubre la experiencia gastronómica única que tenemos para ti.</p>
+                <a href="#menu"
+                    class="bg-red-600 hover:bg-red-700 text-white font-semibold py-3 px-6 rounded shadow transition">Ver
+                    menú</a>
+            </div>
         </div>
     </section>
 
