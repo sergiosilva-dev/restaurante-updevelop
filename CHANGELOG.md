@@ -32,3 +32,21 @@ Este archivo contiene un registro detallado de todos los cambios significativos 
 - [2025-07-18] Sección Contacto optimizada para móvil: formulario limpio, campos bien espaciados, accesibles y listos para validación.
 - [2025-07-18] Footer optimizado: estructura responsiva en 3 columnas, información clara, enlaces útiles y redes sociales.
 - [2025-07-18] Implementado modo oscuro/claro con switch e íconos Font Awesome. Se guarda la preferencia del usuario en localStorage.
+
+---
+
+## [2025-07-24] - Header mejorado visualmente
+
+### ✨ Cambios aplicados
+
+- Estructura HTML del header optimizada con semántica y mejor jerarquía visual.
+- Logo integrado con favicon.ico.
+- Tipografía y espaciado mejorado para menú de navegación.
+- Sección de controles reorganizada (modo oscuro + hamburguesa).
+- Se respetó estructura responsive previa, manteniendo compatibilidad móvil.
+- [2025-07-24] Header optimizado:
+
+  • Se corrige el logo no visible.
+  • Se crea y vincula correctamente el menú móvil para tablets y celulares.
+  • Mejora visual en modo oscuro para íconos de navegación.
+  • Ajustes responsivos y estructurales del navbar.
