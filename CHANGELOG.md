@@ -59,6 +59,7 @@ Este archivo contiene un registro detallado de todos los cambios significativos 
 
 ---
 
-## [2025-07-24] - Mejoras en la página
+## [2025-07-25] - Mejoras en la página
 
-- [2025-07-24] Mejora visual en navbar: corrección de contraste en modo oscuro, legibilidad y transición de colores.
+- [2025-07-25] Mejora visual en navbar: corrección de contraste en modo oscuro, legibilidad y transición de colores.
+- [2025-07-25] Ajuste en los colores de la página, con el cambio de tema claro/oscuro.
