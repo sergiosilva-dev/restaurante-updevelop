@@ -1,0 +1,49 @@
+# Archivos y carpetas del sistema
+.DS_Store
+Thumbs.db
+
+# Node y entorno local (si se migra a Vite o similar)
+node_modules/
+dist/
+.vite/
+.vscode/
+.env
+.env.*
+
+# Archivos de log y temporales
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+*.tmp
+*.temp
+
+# Archivos del sistema operativo
+*.swp
+*.swo
+
+# Archivos generados de macOS/Linux
+*.bak
+*.orig
+
+# Cache de navegadores o herramientas
+.cache/
+.next/
+out/
+
+# Archivos del editor (VS Code, JetBrains, etc.)
+.idea/
+*.code-workspace
+
+# Archivos de deploy opcionales
+*.zip
+*.tar.gz
+
+# Imágenes generadas o recursos innecesarios para el repositorio
+assets/icons/favicon*.png
+assets/img/logos-generados/
+assets/temp/
+
+# GitHub Pages (si generas html dinámico)
+.github/
