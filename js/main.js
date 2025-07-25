@@ -6,7 +6,7 @@ Historial:
 - 2025-07-17: Estructura inicial con ScrollReveal.
 - 2025-07-18: Menú móvil y modo oscuro (localStorage).
 - 2025-07-24: Fix scroll en consola para enlaces vacíos.
-- 2025-07-24: Ajustes visuales en la página para modo oscuro.
+- 2025-07-25: Ajustes visuales en la página para modo oscuro.
 */
 
 // Configuración básica de ScrollReveal

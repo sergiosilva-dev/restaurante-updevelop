@@ -63,3 +63,9 @@ Este archivo contiene un registro detallado de todos los cambios significativos 
 
 - [2025-07-25] Mejora visual en navbar: corrección de contraste en modo oscuro, legibilidad y transición de colores.
 - [2025-07-25] Ajuste en los colores de la página, con el cambio de tema claro/oscuro.
+- [2025-07-25] Ajuste de compatibilidad completa con modo oscuro en todo el sitio:
+
+ • Se añadió `dark:bg-gray-950` y `min-h-screen` al `<body>` para evitar huecos visuales.
+ • Se refactorizó estructura para asegurar que todas las secciones cambien correctamente de tema.
+ • Se optimizó el uso de clases `dark:` en inputs, textarea y contenedores relevantes.
+ • Se confirmó el funcionamiento correcto de ScrollReveal.js y se aplicó clase `fade-in` en múltiples secciones para animaciones suaves.
