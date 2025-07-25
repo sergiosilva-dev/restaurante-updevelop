@@ -54,3 +54,4 @@ Este archivo contiene un registro detallado de todos los cambios significativos 
 - [2025-07-24] Implementados favicons para todas las plataformas (ico, png, apple-touch) y archivo `site.webmanifest` con soporte para instalación PWA.
 - [2025-07-24] Hero actualizado con Imágen y CTA
 - [2025-07-24] Fix en scroll navbar: validación de enlaces sin hash y secciones inexistentes para evitar errores en consola.
+- [2025-07-24] Revisión y ajustes finales para estructura móvil. Ajustes a tamaños de logo, texto y altura en Hero. Confirmado enfoque mobile-first con Tailwind.

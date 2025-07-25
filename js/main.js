@@ -1,12 +1,11 @@
 /*
 Autor: Sergio Silva
 Fecha: 2025-07-17
-Descripción: Archivo JavaScript principal del sitio web del Restaurante. Controla animaciones, interacciones básicas y funciones del sitio.
-Actualizaciones:
-  - [2025-07-17] Creación del archivo con integración básica de ScrollReveal.
-  - [2025-07-18] Implementación de menú móvil toggle.
-  - [2025-07-18] Implementado modo oscuro/claro con switch e íconos Font Awesome. Se guarda la preferencia del usuario en localStorage.
-  - [2025-07-24] Fix en scroll navbar: validación de enlaces sin hash y secciones inexistentes para evitar errores en consola.
+Descripción: Funcionalidad JavaScript del sitio. Modo oscuro, menú móvil y scroll.
+Historial:
+- 2025-07-17: Estructura inicial con ScrollReveal.
+- 2025-07-18: Menú móvil y modo oscuro (localStorage).
+- 2025-07-24: Fix scroll en consola para enlaces vacíos.
 */
 
 // Configuración básica de ScrollReveal

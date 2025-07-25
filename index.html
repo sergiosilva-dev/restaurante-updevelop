@@ -1,27 +1,12 @@
 <!--
 Autor: Sergio Silva
 Fecha: 2025-07-18
-Descripción: Archivo principal HTML del sitio web del Restaurante. Contiene la estructura base del proyecto, incluyendo integración con Tailwind CSS, navbar inicial y secciones listas para desarrollo.
-Actualizaciones:
-  - [2025-07-17] Creación del archivo y estructura inicial.
-  - [2025-07-18] Sección creada con diseño inicial y animación fade-in.
-  - [2025-07-18] Sección creada con diseño visual y estructura responsiva.
-  - [2025-07-18] Sección añadida con estructura en grid y estilo visual moderno.
-  - [2025-07-18] Creación de la sección Contacto con datos, formulario y llamada a la acción.
-  - [2025-07-18] Footer añadido con estructura visual, enlaces y redes sociales.
-  - [2025-07-18] Ajuste del Navbar para optimización móvil y desktop.
-  - [2025-07-18] Ajustes responsivos en sección hero, distribución y tipografías.
-  - [2025-07-18] Optimización para dispositivos móviles con estructura responsive y texto centrado.
-  - [2025-07-18] Optimización para móviles, estructura en columnas adaptables, tipografía central y semántica.
-  - [2025-07-18] Diseño responsivo optimizado para móviles. Layout tipo cards apiladas con imagen circular y citas.
-  - [2025-07-18] Estructura optimizada para móviles con campos apilados, diseño limpio y etiquetas semánticas.
-  - [2025-07-18] Footer rediseñado con estructura semántica, responsiva y moderna.
-  - [2025-07-18] Implementado modo oscuro/claro con switch e íconos Font Awesome. Se guarda la preferencia del usuario en localStorage.
-  - [2025-07-24] Mejora visual y estructura del header.
-  - [2025-07-24] Logo del restaurante agregado con texto integrado y diseño profesional.
-  - [2025-07-24] Implementación de favicons para todas las plataformas (ico, png, apple-touch) y configuración PWA.
-  - [2025-07-24] Mejora visual y estructural del hero.
-  - [2025-07-24] Se modifica footer profesional con 3 columnas (enlaces, contacto, redes sociales) y créditos. Totalmente responsivo y accesible.
+Descripción: Estructura principal del sitio del Restaurante con Tailwind CSS.
+Incluye: Navbar, secciones principales, modo oscuro, favicon, responsive y accesibilidad.
+Historial:
+- 2025-07-17: Estructura inicial, navbar y animación.
+- 2025-07-18: Secciones creadas (Nosotros, Contacto), diseño moderno y responsive.
+- 2025-07-24: Logo, favicons, mejoras visuales, footer profesional, mobile-first.
 -->
 
 <!DOCTYPE html>
@@ -87,7 +72,7 @@ Actualizaciones:
         <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
             <!-- Logo y nombre -->
             <a href="#" class="flex items-center space-x-2">
-                <img src="assets/icons/logo.png" alt="Logo del Restaurante" class="h-12 w-auto" />
+                <img src="assets/icons/logo.png" alt="Logo del Restaurante" class="h-10 sm:h-12 w-auto" />
             </a>
 
             <!-- Menú desktop -->
@@ -122,11 +107,11 @@ Actualizaciones:
     </header>
 
     <!-- Sección Hero -->
-    <section class="relative h-[80vh] bg-cover bg-center bg-no-repeat"
+    <section class="relative min-h-[70vh] sm:h-[80vh] bg-cover bg-center bg-no-repeat"
         style="background-image: url('assets/img/hero.jpg');">
         <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
             <div class="text-center text-white px-4">
-                <h1 class="text-4xl md:text-6xl font-bold mb-4">Sabores que despiertan tus sentidos</h1>
+                <h1 class="text-3xl sm:text-4xl md:text-6xl font-bold mb-4">Sabores que despiertan tus sentidos</h1>
                 <p class="text-lg md:text-xl mb-6">Descubre la experiencia gastronómica única que tenemos para ti.</p>
                 <a href="#menu"
                     class="bg-red-600 hover:bg-red-700 text-white font-semibold py-3 px-6 rounded shadow transition">Ver
@@ -239,14 +224,14 @@ Actualizaciones:
                 <div>
                     <label for="nombre" class="block text-sm font-medium text-gray-700 mb-1">Nombre completo</label>
                     <input type="text" id="nombre" name="nombre"
-                        class="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring focus:border-red-400"
+                        class="text-sm sm:text-base w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring focus:border-red-400"
                         required>
                 </div>
 
                 <div>
                     <label for="correo" class="block text-sm font-medium text-gray-700 mb-1">Correo electrónico</label>
                     <input type="email" id="correo" name="correo"
-                        class="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring focus:border-red-400"
+                        class="text-sm sm:text-base w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring focus:border-red-400"
                         required>
                 </div>
 

@@ -1,11 +1,11 @@
 /*
 Autor: Sergio Silva
 Fecha: 2025-07-17
-Descripción: Hoja de estilos personalizada del sitio web del Restaurante. Utilizada para añadir reglas CSS puras cuando Tailwind no cubre ciertos estilos.
-Actualizaciones:
-  - [2025-07-17] Creación del archivo y documentación inicial.
-  - [2025-07-18] Implementado modo oscuro/claro con switch e íconos Font Awesome. Se guarda la preferencia del usuario en localStorage.
-  - [2025-07-24] Logo del restaurante agregado con texto integrado y diseño profesional.
+Descripción: Estilos personalizados del sitio del Restaurante. Apoyo visual a Tailwind CSS.
+Historial:
+- 2025-07-17: Estructura inicial.
+- 2025-07-18: Modo oscuro/claro (switch) con Font Awesome.
+- 2025-07-24: Ajustes de logo con texto profesional.
 */
 
 /* Animación personalizada: Fade in hacia arriba */
