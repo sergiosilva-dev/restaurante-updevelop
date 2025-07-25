@@ -69,3 +69,5 @@ Este archivo contiene un registro detallado de todos los cambios significativos 
  • Se refactorizó estructura para asegurar que todas las secciones cambien correctamente de tema.
  • Se optimizó el uso de clases `dark:` en inputs, textarea y contenedores relevantes.
  • Se confirmó el funcionamiento correcto de ScrollReveal.js y se aplicó clase `fade-in` en múltiples secciones para animaciones suaves.
+
+- [2025-07-25] Implementación de Formspree para la recepción del mensaje del contacto.
