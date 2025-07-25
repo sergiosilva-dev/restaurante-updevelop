@@ -7,6 +7,7 @@ Historial:
 - 2025-07-17: Estructura inicial, navbar y animación.
 - 2025-07-18: Secciones creadas (Nosotros, Contacto), diseño moderno y responsive.
 - 2025-07-24: Logo, favicons, mejoras visuales, footer profesional, mobile-first.
+- 2025-07-25: Mejora en colores, tipografía, animaciones, accesibilidad.
 -->
 
 <!DOCTYPE html>
@@ -40,6 +41,10 @@ Historial:
                         vino: '#7b2c2c',
                         dorado: '#d4af37',
                     },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    }
                 },
             },
         }
@@ -63,38 +68,45 @@ Historial:
     <meta name="application-name" content="Restaurante">
     <meta name="theme-color" content="#ffffff">
 
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:wght@700&display=swap"
+        rel="stylesheet">
+
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 </head>
 
-<body class="bg-[#fff8ec] text-gray-800 scroll-smooth">
+<body class="font-sans text-gray-800 dark:text-gray-100 bg-white dark:bg-gray-950">
 
     <!-- Navbar principal -->
-    <header class="bg-white dark:bg-gray-900 border-b border-red-600 shadow-md fixed w-full top-0 z-50">
+    <header class="bg-white dark:bg-neutral-950 border-b border-gray-200 dark:border-gray-800 text-gray-800 dark:text-gray-100 transition-colors duration-300 ease-in-out shadow-md fixed w-full top-0 z-50">
         <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
             <!-- Logo y nombre -->
             <a href="#" class="flex items-center space-x-2">
-                <img src="assets/icons/logo.png" alt="Logo del Restaurante" class="h-10 sm:h-12 w-auto" />
+                <img src="assets/icons/logo-light.png" alt="Logo Restaurante" class="h-10 sm:h-12 w-auto block dark:hidden" />
+                <img src="assets/icons/logo-dark.png" alt="Logo Restaurante" class="h-10 sm:h-12 w-auto hidden dark:block" />
             </a>
 
             <!-- Menú desktop -->
             <ul class="hidden md:flex space-x-6 text-sm font-medium">
-                <li><a href="#inicio" class="hover:text-red-600 transition">Inicio</a></li>
+                <li><a href="#inicio" class="px-4 py-2 hover:opacity-80 transition-opacity dark:hover:text-white">Inicio</a></li>
                 <li><a href="#menu" class="hover:text-red-600 transition">Menú</a></li>
                 <li><a href="#nosotros" class="hover:text-red-600 transition">Nosotros</a></li>
+                <li><a href="#testimonios" class="hover:text-red-600 transition">Testimonios</a></li>
                 <li><a href="#contacto" class="hover:text-red-600 transition">Contacto</a></li>
             </ul>
 
             <!-- Íconos -->
             <div class="flex items-center space-x-4">
                 <!-- Modo oscuro -->
-                <button id="theme-toggle" class="text-xl hover:text-red-500 transition-all" aria-label="Cambiar tema">
+                <button id="theme-toggle" class="text-xl text-red-600 hover:text-neutral-900 dark:text-white dark:hover:text-red-600 transition-all" aria-label="Cambiar tema">
                     <i id="theme-icon" class="fas fa-moon"></i>
                 </button>
 
                 <!-- Hamburguesa -->
-                <button id="menuToggle" class="md:hidden text-2xl text-red-600 focus:outline-none">
+                <button id="menuToggle" class="md:hidden text-2xl text-red-600 hover:text-neutral-900 dark:text-white dark:hover:text-red-600 focus:outline-none">
                     <i class="fas fa-bars"></i>
                 </button>
             </div>
@@ -105,6 +117,7 @@ Historial:
             <li><a href="#inicio" class="text-sm hover:text-red-600">Inicio</a></li>
             <li><a href="#menu" class="text-sm hover:text-red-600">Menú</a></li>
             <li><a href="#nosotros" class="text-sm hover:text-red-600">Nosotros</a></li>
+            <li><a href="#testimonios" class="text-sm hover:text-red-600">Testimonios</a></li>
             <li><a href="#contacto" class="text-sm hover:text-red-600">Contacto</a></li>
         </ul>
     </header>
@@ -255,7 +268,7 @@ Historial:
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-10 mt-20">
+    <footer class="bg-neutral-900 dark:bg-neutral-950 text-white py-10 mt-20">
         <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-3 gap-8">
             <!-- Enlaces -->
             <div>
@@ -264,6 +277,7 @@ Historial:
                     <li><a href="#inicio" class="hover:text-red-400 transition">Inicio</a></li>
                     <li><a href="#menu" class="hover:text-red-400 transition">Menú</a></li>
                     <li><a href="#nosotros" class="hover:text-red-400 transition">Nosotros</a></li>
+                    <li><a href="#testimonios" class="hover:text-red-400 transition">Testimonios</a></li>
                     <li><a href="#contacto" class="hover:text-red-400 transition">Contacto</a></li>
                 </ul>
             </div>
