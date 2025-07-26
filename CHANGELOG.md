@@ -71,3 +71,4 @@ Este archivo contiene un registro detallado de todos los cambios significativos 
  • Se confirmó el funcionamiento correcto de ScrollReveal.js y se aplicó clase `fade-in` en múltiples secciones para animaciones suaves.
 
 - [2025-07-25] Implementación de Formspree para la recepción del mensaje del contacto.
+- [2025-07-25] Validaciones con  Js sobre los eventuales casos del formulario de contacto.

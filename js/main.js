@@ -6,7 +6,7 @@ Historial:
 - 2025-07-17: Estructura inicial con ScrollReveal.
 - 2025-07-18: Menú móvil y modo oscuro (localStorage).
 - 2025-07-24: Fix scroll en consola para enlaces vacíos.
-- 2025-07-25: Ajustes visuales en la página para modo oscuro y contacto.
+- 2025-07-25: Ajustes visuales en la página para modo oscuro y contacto con sus validaciones.
 */
 
 // Configuración básica de ScrollReveal
@@ -78,12 +78,18 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-// Enviar formulario de contacto
 const form = document.getElementById("form-contacto");
 const mensaje = document.getElementById("form-mensaje");
 
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
+
+  // Validación previa antes de enviar
+  const correoOk = validarCorreo();
+  const mensajeOk = validarMensaje();
+  if (!correoOk || !mensajeOk) return;
+
+  // Enviar datos al endpoint de Formspree
   const data = new FormData(form);
   const res = await fetch(form.action, {
     method: form.method,
@@ -93,9 +99,58 @@ form.addEventListener("submit", async (e) => {
     },
   });
 
+  // Mostrar mensaje de éxito si fue enviado correctamente
   if (res.ok) {
     form.reset();
     mensaje.classList.remove("hidden");
     setTimeout(() => mensaje.classList.add("hidden"), 5000);
   }
 });
+
+// Inputs y mensajes de error
+const correoInput = document.getElementById("correo");
+const mensajeInput = document.getElementById("mensaje");
+
+const errorCorreo = document.getElementById("error-correo");
+const errorMensaje = document.getElementById("error-mensaje");
+
+// Validar campo correo electrónico
+const validarCorreo = () => {
+  const email = correoInput.value.trim();
+  const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const valido = regex.test(email);
+
+  if (!valido) {
+    correoInput.classList.add("border-red-500", "ring-1", "ring-red-500");
+    correoInput.classList.remove("border-green-500", "ring-green-500");
+    errorCorreo.classList.remove("hidden");
+  } else {
+    correoInput.classList.remove("border-red-500", "ring-red-500");
+    correoInput.classList.add("border-green-500", "ring-1", "ring-green-500");
+    errorCorreo.classList.add("hidden");
+  }
+
+  return valido;
+};
+
+// Validar campo mensaje
+const validarMensaje = () => {
+  const msg = mensajeInput.value.trim();
+  const valido = msg.length > 3;
+
+  if (!valido) {
+    mensajeInput.classList.add("border-red-500", "ring-1", "ring-red-500");
+    mensajeInput.classList.remove("border-green-500", "ring-green-500");
+    errorMensaje.classList.remove("hidden");
+  } else {
+    mensajeInput.classList.remove("border-red-500", "ring-red-500");
+    mensajeInput.classList.add("border-green-500", "ring-1", "ring-green-500");
+    errorMensaje.classList.add("hidden");
+  }
+
+  return valido;
+};
+
+// Escuchar eventos en tiempo real
+correoInput.addEventListener("input", validarCorreo);
+mensajeInput.addEventListener("input", validarMensaje);

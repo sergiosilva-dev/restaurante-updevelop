@@ -258,14 +258,14 @@ Historial:
                 <label for="correo" class="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-1">
                     Correo electrónico
                 </label>
-                <input type="email" id="correo" name="correo" required
+                <input type="email" id="correo" name="correo"
                     class="text-sm w-full border border-gray-300 dark:border-gray-600 rounded px-4 py-2 focus:outline-none focus:ring focus:border-neutral-500 dark:bg-neutral-800 dark:text-white"
                     placeholder="tucorreo@example.com" aria-required="true" />
 
                 <label for="mensaje" class="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-1">
                     Mensaje o solicitud
                 </label>
-                <textarea id="mensaje" name="mensaje" rows="4" required
+                <textarea id="mensaje" name="mensaje" rows="4"
                     class="w-full border border-gray-300 dark:border-gray-600 rounded px-4 py-2 focus:outline-none focus:ring focus:border-neutral-500 dark:bg-neutral-800 dark:text-white"
                     placeholder="Escribe tu mensaje..." aria-required="true"></textarea>
 
@@ -274,8 +274,11 @@ Historial:
                     Enviar mensaje
                 </button>
             </form>
+            <br>
             <p id="form-mensaje" class="text-green-600 dark:text-green-400 text-sm mt-4 hidden">¡Mensaje enviado con
                 éxito!</p>
+            <p id="error-correo" class="text-sm text-red-500 dark:text-red-400 hidden mt-1">Correo inválido</p>
+            <p id="error-mensaje" class="text-sm text-red-500 dark:text-red-400 hidden mt-1">Mensaje requerido</p>
         </div>
     </section>
 
