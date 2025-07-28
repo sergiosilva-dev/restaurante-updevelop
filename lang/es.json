@@ -1,0 +1,69 @@
+{
+  "title": "Restaurante | Up Develop",
+  "metaDescription": "Sitio web moderno y responsive para restaurante. Menú, ubicación, contacto y más.",
+  "nav": {
+    "inicio": "Inicio",
+    "menu": "Menú",
+    "nosotros": "Nosotros",
+    "testimonios": "Testimonios",
+    "contacto": "Contacto"
+  },
+  "hero": {
+    "titulo": "Sabores que despiertan tus sentidos",
+    "subtitulo": "Descubre la experiencia gastronómica única que tenemos para ti.",
+    "boton": "Ver menú"
+  },
+  "menu": {
+    "titulo": "Nuestro Menú",
+    "entradas": "Entradas",
+    "entradasDesc": "Deliciosos aperitivos para comenzar tu experiencia gastronómica.",
+    "platos": "Platos Fuertes",
+    "platosDesc": "Sabores principales preparados con calidad y dedicación.",
+    "postres": "Postres",
+    "postresDesc": "Dulces irresistibles para cerrar con broche de oro."
+  },
+  "nosotros": {
+    "titulo": "Sobre Nosotros",
+    "descripcion": "Somos un restaurante con pasión por la buena comida y el servicio excepcional...",
+    "descripcion2": "Con ingredientes frescos, recetas tradicionales y un ambiente acogedor..."
+  },
+  "testimonios": {
+    "titulo": "Lo que dicen nuestros clientes",
+    "persona1": {
+      "nombre": "Laura Gómez",
+      "comentario": "El ambiente es encantador y la comida espectacular. Definitivamente volveré pronto."
+    },
+    "persona2": {
+      "nombre": "Carlos Méndez",
+      "comentario": "Una experiencia única. Platos exquisitos y atención de primera."
+    },
+    "persona3": {
+      "nombre": "Valentina Ruiz",
+      "comentario": "Recomiendo este restaurante a todos. Calidad y sabor en cada bocado."
+    }
+  },
+  "contacto": {
+    "titulo": "Contáctanos",
+    "correo": "Correo electrónico",
+    "mensaje": "Mensaje o solicitud",
+    "boton": "Enviar mensaje",
+    "exito": "¡Mensaje enviado con éxito!",
+    "errorCorreo": "Correo inválido",
+    "errorMensaje": "Mensaje requerido",
+    "placeholderCorreo": "tucorreo@ejemplo.com",
+    "placeholderMensaje": "Escribe tu mensaje..."
+  },
+  "footer": {
+    "enlaces": "Enlaces",
+    "inicio": "Inicio",
+    "menu": "Menú",
+    "nosotros": "Nosotros",
+    "testimonios": "Testimonios",
+    "contacto": "Contacto",
+    "direccion": "Calle 123, Bogotá, Colombia",
+    "telefono": "Tél: +57 300 123 4567",
+    "email": "Email: info@restaurante.com",
+    "siguenos": "Síguenos",
+    "derechos": "© 2025 Restaurante. Todos los derechos reservados. Diseñado por <a href=\"https://updevelop.com.co\" class=\"text-neutral-500 hover:underline\">Up Develop</a>."
+  }
+}

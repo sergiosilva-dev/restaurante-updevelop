@@ -1,0 +1,69 @@
+{
+  "title": "Restaurant | Up Develop",
+  "metaDescription": "Modern and responsive website for a restaurant. Menu, location, contact and more.",
+  "nav": {
+    "inicio": "Home",
+    "menu": "Menu",
+    "nosotros": "About Us",
+    "testimonios": "Testimonials",
+    "contacto": "Contact"
+  },
+  "hero": {
+    "titulo": "Flavors that awaken your senses",
+    "subtitulo": "Discover the unique dining experience we have for you.",
+    "boton": "View Menu"
+  },
+  "menu": {
+    "titulo": "Our Menu",
+    "entradas": "Starters",
+    "entradasDesc": "Delicious appetizers to start your gastronomic experience.",
+    "platos": "Main Dishes",
+    "platosDesc": "Main flavors prepared with quality and care.",
+    "postres": "Desserts",
+    "postresDesc": "Irresistible sweets to end on a high note."
+  },
+  "nosotros": {
+    "titulo": "About Us",
+    "descripcion": "We are a restaurant with a passion for good food and exceptional service...",
+    "descripcion2": "With fresh ingredients, traditional recipes, and a cozy atmosphere..."
+  },
+  "testimonios": {
+    "titulo": "What our clients say",
+    "persona1": {
+      "nombre": "Laura Gómez",
+      "comentario": "The atmosphere is lovely and the food is amazing. I will definitely return soon."
+    },
+    "persona2": {
+      "nombre": "Carlos Méndez",
+      "comentario": "A unique experience. Exquisite dishes and first-class service."
+    },
+    "persona3": {
+      "nombre": "Valentina Ruiz",
+      "comentario": "I recommend this restaurant to everyone. Quality and flavor in every bite."
+    }
+  },
+  "contacto": {
+    "titulo": "Contact Us",
+    "correo": "Email address",
+    "mensaje": "Message or request",
+    "boton": "Send message",
+    "exito": "Message sent successfully!",
+    "errorCorreo": "Invalid email",
+    "errorMensaje": "Message required",
+    "placeholderCorreo": "yourmail@example.com",
+    "placeholderMensaje": "Write your message..."
+  },
+  "footer": {
+    "enlaces": "Links",
+    "inicio": "Home",
+    "menu": "Menu",
+    "nosotros": "About Us",
+    "testimonios": "Testimonials",
+    "contacto": "Contact",
+    "direccion": "123 Street, Bogotá, Colombia",
+    "telefono": "Tel: +57 300 123 4567",
+    "email": "Email: info@restaurante.com",
+    "siguenos": "Follow us",
+    "derechos": "© 2025 Restaurant. All rights reserved. Designed by <a href=\"https://updevelop.com.co\" class=\"text-neutral-500 hover:underline\">Up Develop</a>."
+  }
+}

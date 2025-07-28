@@ -1,74 +1,101 @@
 # 📒 CHANGELOG
 
-Este archivo contiene un registro detallado de todos los cambios significativos realizados en el proyecto **restaurante-updevelop**, ordenados cronológicamente.
+Este archivo contiene un registro estructurado y detallado de todos los cambios realizados en el proyecto **restaurante-updevelop**, ordenados cronológicamente y conforme a las buenas prácticas de versionado.
 
 ---
 
-## [2025-07-17] - 🟢 Versión incial
+## [v1.0.0] - 2025-07-18
 
-### Agregado
+🚀 **Primer lanzamiento oficial**
 
-- Estructura base del repositorio creada.
-- Licencia MIT configurada.
-- Archivo `README.md` con objetivo, tecnologías y despliegue.
-- Carpetas iniciales: `css`, `js`, `assets/img`, `assets/icons`.
-- Archivo base: `index.html`, `styles.css`, `main.js`, `.gitignore`.
-- Creación del archivo `index.html` con estructura base: Tailwind CDN, navbar, sección Hero y scroll suave.
-- Creación del archivo `styles.css` con animación fade-in y botón .btn-outline compatible con uso vía CDN.
-- Creación del archivo `main.js` con integración inicial de ScrollReveal y función de scroll activo para navbar.
+### ✨ Agregado
 
----
-
-- [2025-07-18] Agregada sección “Menú” en index.html con estructura responsive, animaciones fade-in y tarjetas visuales.
-- [2025-07-18] Agregada sección “Nosotros” en index.html con diseño visual, imagen decorativa y contenido institucional.
-- [2025-07-18] Sección “Opiniones de Clientes” añadida con testimonios, avatars y calificación en estrellas.
-- [2025-07-18] Sección “Contacto” añadida con información del restaurante, formulario de contacto y botón de reserva por WhatsApp.
-- [2025-07-18] Footer añadido con estructura visual, enlaces internos, redes sociales y créditos de autor.
-- [2025-07-18] Navbar adaptado para dispositivos móviles con toggle (hamburguesa) y menú vertical.
-- [2025-07-18] Ajustes responsivos en sección hero, distribución y tipografías.
-- [2025-07-18] Optimización de la sección “Menú” para mobile-first con grillas fluidas, texto centrado y estructura semántica.
-- [2025-07-18] Sección “Nosotros” optimizada para móviles: layout en columnas adaptables, imagen responsiva, texto centrado y justificado.
-- [2025-07-18] Sección Testimonios optimizada para móviles: tarjetas verticales, imágenes circulares, texto limpio y responsivo.
-- [2025-07-18] Sección Contacto optimizada para móvil: formulario limpio, campos bien espaciados, accesibles y listos para validación.
-- [2025-07-18] Footer optimizado: estructura responsiva en 3 columnas, información clara, enlaces útiles y redes sociales.
-- [2025-07-18] Implementado modo oscuro/claro con switch e íconos Font Awesome. Se guarda la preferencia del usuario en localStorage.
+- Estructura base del proyecto: `index.html`, `style.css`, `main.js`, `assets/`, `.gitignore`, `README.md`, `LICENSE`.
+- Secciones completas: Hero, Menú, Nosotros, Opiniones de Clientes, Contacto y Footer.
+- Animaciones con ScrollReveal.js para una experiencia visual dinámica.
+- Compatibilidad con Tailwind CDN.
+- Documentación inicial incluida en cada archivo.
+- Control de versiones en GitHub y seguimiento con `CHANGELOG.md`.
 
 ---
 
-## [2025-07-24] - Header mejorado visualmente
+## [v1.0.1] - 2025-07-24
 
-### ✨ Cambios aplicados
+🎨 **Mejoras visuales y estructurales**
 
-- Estructura HTML del header optimizada con semántica y mejor jerarquía visual.
-- Logo integrado con favicon.ico.
-- Tipografía y espaciado mejorado para menú de navegación.
-- Sección de controles reorganizada (modo oscuro + hamburguesa).
-- Se respetó estructura responsive previa, manteniendo compatibilidad móvil.
-- [2025-07-24] Header optimizado:
+### 🛠️ Mejorado
 
-  • Se corrige el logo no visible.
-  • Se crea y vincula correctamente el menú móvil para tablets y celulares.
-  • Mejora visual en modo oscuro para íconos de navegación.
-  • Ajustes responsivos y estructurales del navbar.
-- [2025-07-24] Logo del restaurante agregado en formato `.png` con texto integrado y diseño profesional. Alineado visualmente con el header y compatible con modo claro/oscuro.
-- [2025-07-24] Implementados favicons para todas las plataformas (ico, png, apple-touch) y archivo `site.webmanifest` con soporte para instalación PWA.
-- [2025-07-24] Hero actualizado con Imágen y CTA
-- [2025-07-24] Fix en scroll navbar: validación de enlaces sin hash y secciones inexistentes para evitar errores en consola.
-- [2025-07-24] Revisión y ajustes finales para estructura móvil. Ajustes a tamaños de logo, texto y altura en Hero. Confirmado enfoque mobile-first con Tailwind.
-- [2025-07-24] Agregada paleta de colores completa (rojo, crema, vino, dorado) para identidad visual coherente.
+- Header: estructura profesional, logo responsive, botón de tema y menú móvil.
+- Footer: estructura en 3 columnas con enlaces internos, redes sociales y créditos.
+- Hero: imagen profesional, llamado a la acción y diseño centrado.
+
+### ✨ Agregado
+
+- Logos claros/oscuros en PNG.
+- Favicons y archivo `site.webmanifest` para PWA.
+- Scroll activo con mejora de errores en consola.
+- Paleta de colores personalizada: rojo, crema, vino, dorado.
 
 ---
 
-## [2025-07-25] - Mejoras en la página
+## [v1.0.2] - 2025-07-25
 
-- [2025-07-25] Mejora visual en navbar: corrección de contraste en modo oscuro, legibilidad y transición de colores.
-- [2025-07-25] Ajuste en los colores de la página, con el cambio de tema claro/oscuro.
-- [2025-07-25] Ajuste de compatibilidad completa con modo oscuro en todo el sitio:
+🌗 **Modo oscuro y validaciones**
 
- • Se añadió `dark:bg-gray-950` y `min-h-screen` al `<body>` para evitar huecos visuales.
- • Se refactorizó estructura para asegurar que todas las secciones cambien correctamente de tema.
- • Se optimizó el uso de clases `dark:` en inputs, textarea y contenedores relevantes.
- • Se confirmó el funcionamiento correcto de ScrollReveal.js y se aplicó clase `fade-in` en múltiples secciones para animaciones suaves.
+### ✨ Agregado
 
-- [2025-07-25] Implementación de Formspree para la recepción del mensaje del contacto.
-- [2025-07-25] Validaciones con  Js sobre los eventuales casos del formulario de contacto.
+- Integración con Formspree para formulario funcional.
+- Validación en tiempo real para inputs del formulario (JS + Tailwind).
+- ScrollReveal aplicado globalmente.
+
+### 🛠️ Mejorado
+
+- Contraste y legibilidad en navbar para modo oscuro.
+- Estilo visual en inputs y transiciones.
+- Aplicación total del modo oscuro en todas las secciones.
+- Organización semántica del HTML para accesibilidad.
+
+### 🐞 Corregido
+
+- Exclusión de archivos temporales y recursos no versionables en `.gitignore`.
+
+---
+
+## [v1.1.0] - 2025-07-28
+
+🌍 **Interactividad avanzada: selector de idioma**
+
+### ✨ Agregado
+
+- Sistema multilenguaje (`i18n`) con archivos `es.json` y `en.json`.
+- Selector de idioma visual con banderas (toggle JS).
+- Persistencia del idioma seleccionado en `localStorage`.
+- Traducción de `title` y `meta description`.
+- Traducción dinámica de `placeholder` en formularios.
+
+### 🛠️ Mejorado
+
+- Aplicación de `data-i18n`, `data-i18n-placeholder` y renderización de textos dinámicos con `innerHTML` para contenidos con HTML como enlaces.
+- Organización del script para manejar traducciones anidadas con acceso profundo a claves.
+- Reestructuración del menú de idioma: de `hover` a `toggle` con cierre externo.
+
+---
+
+### 🔜 Próxima versión (v2.0.0) – En desarrollo
+
+📌 Implementaciones planificadas (según checklist actual):
+
+- Página de historia y filosofía del restaurante.
+- Sección de eventos, ofertas o promociones.
+- Mapa interactivo embebido (Google Maps).
+- Validación extendida con mensajes personalizados.
+- Carga diferida de imágenes (`lazy` loading).
+- Mejoras SEO avanzadas (Open Graph, Twitter Card, etc.).
+- Galería con Lightbox.
+- Páginas de error personalizadas.
+- Preparación para migración a entorno Vite o frameworks.
+
+---
+
+🧑‍💻 _Actualizado por: Sergio Silva – Up Develop_  
+📅 Última actualización: **2025-07-28**

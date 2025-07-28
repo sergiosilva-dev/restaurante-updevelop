@@ -8,6 +8,7 @@ Historial:
 - 2025-07-18: Secciones creadas (Nosotros, Contacto), diseño moderno y responsive.
 - 2025-07-24: Logo, favicons, mejoras visuales, footer profesional, mobile-first.
 - 2025-07-25: Mejora en colores, tipografía, animaciones, accesibilidad, contacto.
+- 2025-07-28: Implementación completa del sistema multilenguaje (i18n), placeholders y textos con HTML dinámico.
 -->
 
 <!DOCTYPE html>
@@ -20,9 +21,9 @@ Historial:
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
     <!-- SEO Básico -->
-    <title>Restaurante | Up Develop</title>
-    <meta name="description"
-        content="Sitio web moderno y responsive para restaurante. Menú, ubicación, contacto y más.">
+    <title data-i18n="title">Restaurante | Up Develop</title>
+    <meta name="description" content="Sitio web moderno y responsive para restaurante. Menú, ubicación, contacto y más."
+        data-i18n="metaDescription">
     <meta name="keywords" content="restaurante, comida, menú, reservas, sitio web">
     <meta name="author" content="Sergio Silva">
 
@@ -94,12 +95,15 @@ Historial:
 
             <!-- Menú desktop -->
             <ul class="hidden md:flex space-x-6 text-sm font-medium">
-                <li><a href="#inicio"
+                <li><a href="#inicio" data-i18n="nav.inicio"
                         class="px-4 py-2 hover:opacity-80 transition-opacity dark:hover:text-white">Inicio</a></li>
-                <li><a href="#menu" class="hover:text-neutral-500 transition">Menú</a></li>
-                <li><a href="#nosotros" class="hover:text-neutral-500 transition">Nosotros</a></li>
-                <li><a href="#testimonios" class="hover:text-neutral-500 transition">Testimonios</a></li>
-                <li><a href="#contacto" class="hover:text-neutral-500 transition">Contacto</a></li>
+                <li><a href="#menu" data-i18n="nav.menu" class="hover:text-neutral-500 transition">Menú</a></li>
+                <li><a href="#nosotros" data-i18n="nav.nosotros" class="hover:text-neutral-500 transition">Nosotros</a>
+                </li>
+                <li><a href="#testimonios" data-i18n="nav.testimonios"
+                        class="hover:text-neutral-500 transition">Testimonios</a></li>
+                <li><a href="#contacto" data-i18n="nav.contacto" class="hover:text-neutral-500 transition">Contacto</a>
+                </li>
             </ul>
 
             <!-- Íconos -->
@@ -111,6 +115,33 @@ Historial:
                     <i id="theme-icon" class="fas fa-moon"></i>
                 </button>
 
+                <!-- Selector de idioma con bandera mejorado -->
+                <div class="relative group">
+                    <!-- Botón principal -->
+                    <button id="idioma-toggle"
+                        class="flex items-center gap-2 px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-white rounded shadow-sm hover:bg-gray-200 dark:hover:bg-gray-600 transition-all">
+                        <img id="bandera-actual" src="https://flagcdn.com/w40/es.png" alt="Idioma actual"
+                            class="w-[20px] h-[14px] object-cover">
+                    </button>
+
+                    <!-- Menú de idiomas -->
+                    <div id="idiomas-menu"
+                        class="absolute right-0 mt-2 hidden bg-white dark:bg-gray-800 rounded shadow-lg p-2 z-50 w-32 transition-all">
+                        <button data-idioma="es"
+                            class="flex items-center gap-2 px-2 py-1 rounded hover:bg-gray-100 dark:hover:bg-gray-700 w-full transition-all">
+                            <img src="https://flagcdn.com/w40/es.png" class="w-[20px] h-[14px] object-cover"
+                                alt="Español" />
+                            <span class="text-sm text-gray-800 dark:text-white">Español</span>
+                        </button>
+                        <button data-idioma="en"
+                            class="flex items-center gap-2 px-2 py-1 rounded hover:bg-gray-100 dark:hover:bg-gray-700 w-full transition-all">
+                            <img src="https://flagcdn.com/w40/gb.png" class="w-[20px] h-[14px] object-cover"
+                                alt="English" />
+                            <span class="text-sm text-gray-800 dark:text-white">English</span>
+                        </button>
+                    </div>
+                </div>
+
                 <!-- Hamburguesa -->
                 <button id="menuToggle"
                     class="md:hidden text-2xl text-neutral-500 hover:text-neutral-900 dark:text-white dark:hover:text-neutral-500 focus:outline-none">
@@ -121,11 +152,12 @@ Historial:
 
         <!-- Menú móvil (solo visible en móvil) -->
         <ul id="mobileMenu" class="md:hidden flex flex-col items-end space-y-2 pr-6 pb-4 hidden">
-            <li><a href="#inicio" class="text-sm hover:text-neutral-500">Inicio</a></li>
-            <li><a href="#menu" class="text-sm hover:text-neutral-500">Menú</a></li>
-            <li><a href="#nosotros" class="text-sm hover:text-neutral-500">Nosotros</a></li>
-            <li><a href="#testimonios" class="text-sm hover:text-neutral-500">Testimonios</a></li>
-            <li><a href="#contacto" class="text-sm hover:text-neutral-500">Contacto</a></li>
+            <li><a href="#inicio" data-i18n="nav.inicio" class="text-sm hover:text-neutral-500">Inicio</a></li>
+            <li><a href="#menu" data-i18n="nav.menu" class="text-sm hover:text-neutral-500">Menú</a></li>
+            <li><a href="#nosotros" data-i18n="nav.nosotros" class="text-sm hover:text-neutral-500">Nosotros</a></li>
+            <li><a href="#testimonios" data-i18n="nav.testimonios"
+                    class="text-sm hover:text-neutral-500">Testimonios</a></li>
+            <li><a href="#contacto" data-i18n="nav.contacto" class="text-sm hover:text-neutral-500">Contacto</a></li>
         </ul>
     </header>
 
@@ -134,9 +166,11 @@ Historial:
         style="background-image: url('assets/img/hero.jpg');">
         <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
             <div class="text-center text-white px-4 md:px-0 dark:text-white">
-                <h1 class="text-3xl sm:text-4xl md:text-6xl font-bold mb-4">Sabores que despiertan tus sentidos</h1>
-                <p class="text-lg md:text-xl mb-6">Descubre la experiencia gastronómica única que tenemos para ti.</p>
-                <a href="#menu"
+                <h1 data-i18n="hero.titulo" class="text-3xl sm:text-4xl md:text-6xl font-bold mb-4">Sabores que
+                    despiertan tus sentidos</h1>
+                <p data-i18n="hero.subtitulo" class="text-lg md:text-xl mb-6">Descubre la experiencia gastronómica única
+                    que tenemos para ti.</p>
+                <a href="#menu" data-i18n="hero.boton"
                     class="bg-neutral-500 hover:bg-neutral-600 dark:bg-neutral-900 dark:hover:bg-neutral-500 text-white font-semibold py-3 px-6 rounded shadow transition">Ver
                     menú</a>
             </div>
@@ -146,15 +180,17 @@ Historial:
     <!-- Sección Menú -->
     <section id="menu" class="py-20 bg-white dark:bg-neutral-900 text-gray-800 dark:text-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 class="fade-in text-3xl font-bold mb-12">Nuestro Menú</h2>
+            <h2 class="fade-in text-3xl font-bold mb-12" data-i18n="menu.titulo">Nuestro Menú</h2>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
                 <!-- Entradas -->
                 <article
                     class="fade-in bg-gray-100 dark:bg-neutral-800 p-6 rounded-lg shadow hover:shadow-lg transition">
                     <img src="assets/img/entradas.jpg" alt="Entradas" class="w-full h-40 object-cover rounded mb-4">
-                    <h3 class="text-xl font-semibold text-neutral-500 dark:text-white mb-2">Entradas</h3>
-                    <p class="text-gray-600 dark:text-gray-200">Deliciosos aperitivos para comenzar tu experiencia
+                    <h3 class="text-xl font-semibold text-neutral-500 dark:text-white mb-2" data-i18n="menu.entradas">
+                        Entradas</h3>
+                    <p class="text-gray-600 dark:text-gray-200" data-i18n="menu.entradasDesc">Deliciosos aperitivos para
+                        comenzar tu experiencia
                         gastronómica.</p>
                 </article>
 
@@ -163,8 +199,10 @@ Historial:
                     class="fade-in bg-gray-100 dark:bg-neutral-800 p-6 rounded-lg shadow hover:shadow-lg transition">
                     <img src="assets/img/plato-fuerte.jpg" alt="Platos Fuertes"
                         class="w-full h-40 object-cover rounded mb-4">
-                    <h3 class="text-xl font-semibold text-neutral-500 dark:text-white mb-2">Platos Fuertes</h3>
-                    <p class="text-gray-600 dark:text-gray-200">Sabores principales preparados con calidad y dedicación.
+                    <h3 class="text-xl font-semibold text-neutral-500 dark:text-white mb-2" data-i18n="menu.platos">
+                        Platos Fuertes</h3>
+                    <p class="text-gray-600 dark:text-gray-200" data-i18n="menu.platosDesc">Sabores principales
+                        preparados con calidad y dedicación.
                     </p>
                 </article>
 
@@ -172,8 +210,10 @@ Historial:
                 <article
                     class="fade-in bg-gray-100 dark:bg-neutral-800 p-6 rounded-lg shadow hover:shadow-lg transition">
                     <img src="assets/img/postres.jpg" alt="Postres" class="w-full h-40 object-cover rounded mb-4">
-                    <h3 class="text-xl font-semibold text-neutral-500 dark:text-white mb-2">Postres</h3>
-                    <p class="text-gray-600 dark:text-gray-200">Dulces irresistibles para cerrar con broche de oro.</p>
+                    <h3 class="text-xl font-semibold text-neutral-500 dark:text-white mb-2" data-i18n="menu.postres">
+                        Postres</h3>
+                    <p class="text-gray-600 dark:text-gray-200" data-i18n="menu.postresDesc">Dulces irresistibles para
+                        cerrar con broche de oro.</p>
                 </article>
             </div>
         </div>
@@ -182,7 +222,8 @@ Historial:
     <!-- Sección Nosotros -->
     <section id="nosotros" class="py-20 bg-gray-50 dark:bg-neutral-800">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="fade-in text-3xl font-bold text-center text-gray-800 dark:text-white mb-12">Sobre Nosotros</h2>
+            <h2 class="fade-in text-3xl font-bold text-center text-gray-800 dark:text-white mb-12"
+                data-i18n="nosotros.titulo">Sobre Nosotros</h2>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                 <!-- Imagen -->
@@ -193,12 +234,14 @@ Historial:
 
                 <!-- Texto -->
                 <article class="fade-in">
-                    <p class="text-gray-700 dark:text-gray-200 text-justify leading-relaxed">
+                    <p class="text-gray-700 dark:text-gray-200 text-justify leading-relaxed"
+                        data-i18n="nosotros.descripcion">
                         Somos un restaurante con pasión por la buena comida y el servicio excepcional. Nuestro equipo
                         está comprometido con ofrecer una experiencia inolvidable a cada cliente, desde las recetas
                         hasta la atención.
                     </p>
-                    <p class="text-gray-700 dark:text-gray-200 mt-4 text-justify leading-relaxed">
+                    <p class="text-gray-700 dark:text-gray-200 mt-4 text-justify leading-relaxed"
+                        data-i18n="nosotros.descripcion2">
                         Con ingredientes frescos, recetas tradicionales y un ambiente acogedor, buscamos ser tu lugar
                         favorito para compartir momentos especiales.
                     </p>
@@ -210,7 +253,8 @@ Historial:
     <!-- Sección Testimonios -->
     <section id="testimonios" class="py-20 bg-white dark:bg-neutral-900">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 class="fade-in text-3xl font-bold text-gray-800 dark:text-white mb-12">Lo que dicen nuestros clientes
+            <h2 class="fade-in text-3xl font-bold text-gray-800 dark:text-white mb-12" data-i18n="testimonios.titulo">Lo
+                que dicen nuestros clientes
             </h2>
 
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -218,8 +262,10 @@ Historial:
                 <article class="fade-in bg-gray-50 dark:bg-neutral-800 p-6 rounded-lg shadow-md text-left">
                     <img src="assets/img/laura-gomez.jpg" alt="Laura Gómez"
                         class="w-16 h-16 rounded-full mx-auto mb-4 object-cover">
-                    <h3 class="text-lg font-semibold text-neutral-500 dark:text-white">Laura Gómez</h3>
-                    <p class="text-gray-600 dark:text-gray-200 text-sm mt-2">"El ambiente es encantador y la comida
+                    <h3 class="text-lg font-semibold text-neutral-500 dark:text-white"
+                        data-i18n="testimonios.persona1.nombre">Laura Gómez</h3>
+                    <p class="text-gray-600 dark:text-gray-200 text-sm mt-2"
+                        data-i18n="testimonios.persona1.comentario">"El ambiente es encantador y la comida
                         espectacular.
                         Definitivamente volveré pronto."</p>
                 </article>
@@ -228,8 +274,10 @@ Historial:
                 <article class="fade-in bg-gray-50 dark:bg-neutral-800 p-6 rounded-lg shadow-md text-left">
                     <img src="assets/img/carlos-mendez.jpg" alt="Carlos Méndez"
                         class="w-16 h-16 rounded-full mx-auto mb-4 object-cover">
-                    <h3 class="text-lg font-semibold text-neutral-500 dark:text-white">Carlos Méndez</h3>
-                    <p class="text-gray-600 dark:text-gray-200 text-sm mt-2">"Una experiencia única. Platos exquisitos y
+                    <h3 class="text-lg font-semibold text-neutral-500 dark:text-white"
+                        data-i18n="testimonios.persona2.nombre">Carlos Méndez</h3>
+                    <p class="text-gray-600 dark:text-gray-200 text-sm mt-2"
+                        data-i18n="testimonios.persona2.comentario">"Una experiencia única. Platos exquisitos y
                         atención de
                         primera."</p>
                 </article>
@@ -238,8 +286,10 @@ Historial:
                 <article class="fade-in bg-gray-50 dark:bg-neutral-800 p-6 rounded-lg shadow-md text-left">
                     <img src="assets/img/valentina-ruiz.jpg" alt="Valentina Ruiz"
                         class="w-16 h-16 rounded-full mx-auto mb-4 object-cover">
-                    <h3 class="text-lg font-semibold text-neutral-500 dark:text-white">Valentina Ruiz</h3>
-                    <p class="text-gray-600 dark:text-gray-200 text-sm mt-2">"Recomiendo este restaurante a todos.
+                    <h3 class="text-lg font-semibold text-neutral-500 dark:text-white"
+                        data-i18n="testimonios.persona3.nombre">Valentina Ruiz</h3>
+                    <p class="text-gray-600 dark:text-gray-200 text-sm mt-2"
+                        data-i18n="testimonios.persona3.comentario">"Recomiendo este restaurante a todos.
                         Calidad y sabor en cada
                         bocado."</p>
                 </article>
@@ -250,35 +300,44 @@ Historial:
     <!-- Sección Contacto -->
     <section id="contacto" class="py-20 bg-gray-50 dark:bg-neutral-800">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="fade-in text-3xl font-bold text-center text-gray-800 dark:text-white mb-12">Contáctanos</h2>
+            <h2 class="fade-in text-3xl font-bold text-center text-gray-800 dark:text-white mb-12"
+                data-i18n="contacto.titulo">Contáctanos</h2>
 
             <form id="form-contacto" action="https://formspree.io/f/meozglrk" method="POST"
                 class="bg-white dark:bg-neutral-900 p-8 rounded-lg shadow-md space-y-6"
                 aria-labelledby="contact-heading">
-                <label for="correo" class="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-1">
+                <label for="correo" class="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-1"
+                    data-i18n="contacto.correo">
                     Correo electrónico
                 </label>
                 <input type="email" id="correo" name="correo"
                     class="text-sm w-full border border-gray-300 dark:border-gray-600 rounded px-4 py-2 focus:outline-none focus:ring focus:border-neutral-500 dark:bg-neutral-800 dark:text-white"
-                    placeholder="tucorreo@example.com" aria-required="true" />
+                    data-i18n-placeholder="contacto.placeholderCorreo" placeholder="tucorreo@example.com"
+                    aria-required="true" />
 
-                <label for="mensaje" class="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-1">
+                <label for="mensaje" class="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-1"
+                    data-i18n="contacto.mensaje">
                     Mensaje o solicitud
                 </label>
                 <textarea id="mensaje" name="mensaje" rows="4"
                     class="w-full border border-gray-300 dark:border-gray-600 rounded px-4 py-2 focus:outline-none focus:ring focus:border-neutral-500 dark:bg-neutral-800 dark:text-white"
-                    placeholder="Escribe tu mensaje..." aria-required="true"></textarea>
+                    data-i18n-placeholder="contacto.placeholderMensaje" placeholder="Escribe tu mensaje..."
+                    aria-required="true"></textarea>
 
                 <button type="submit"
-                    class="w-full bg-neutral-500 hover:bg-neutral-600 dark:bg-neutral-800 dark:hover:bg-neutral-500 text-white font-semibold py-3 rounded transition-colors">
+                    class="w-full bg-neutral-500 hover:bg-neutral-600 dark:bg-neutral-800 dark:hover:bg-neutral-500 text-white font-semibold py-3 rounded transition-colors"
+                    data-i18n="contacto.boton">
                     Enviar mensaje
                 </button>
             </form>
             <br>
-            <p id="form-mensaje" class="text-green-600 dark:text-green-400 text-sm mt-4 hidden">¡Mensaje enviado con
+            <p id="form-mensaje" class="text-green-600 dark:text-green-400 text-sm mt-4 hidden"
+                data-i18n="contacto.exito">¡Mensaje enviado con
                 éxito!</p>
-            <p id="error-correo" class="text-sm text-red-500 dark:text-red-400 hidden mt-1">Correo inválido</p>
-            <p id="error-mensaje" class="text-sm text-red-500 dark:text-red-400 hidden mt-1">Mensaje requerido</p>
+            <p id="error-correo" class="text-sm text-red-500 dark:text-red-400 hidden mt-1"
+                data-i18n="contacto.errorCorreo">Correo inválido</p>
+            <p id="error-mensaje" class="text-sm text-red-500 dark:text-red-400 hidden mt-1"
+                data-i18n="contacto.errorMensaje">Mensaje requerido</p>
         </div>
     </section>
 
@@ -287,27 +346,31 @@ Historial:
         <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-3 gap-8">
             <!-- Enlaces -->
             <div>
-                <h3 class="text-xl font-semibold mb-4">Enlaces</h3>
+                <h3 class="text-xl font-semibold mb-4" data-i18n="footer.enlaces">Enlaces</h3>
                 <ul class="space-y-2 text-sm">
-                    <li><a href="#inicio" class="hover:text-neutral-500 transition">Inicio</a></li>
-                    <li><a href="#menu" class="hover:text-neutral-500 transition">Menú</a></li>
-                    <li><a href="#nosotros" class="hover:text-neutral-500 transition">Nosotros</a></li>
-                    <li><a href="#testimonios" class="hover:text-neutral-500 transition">Testimonios</a></li>
-                    <li><a href="#contacto" class="hover:text-neutral-500 transition">Contacto</a></li>
+                    <li><a href="#inicio" class="hover:text-neutral-500 transition" data-i18n="footer.inicio">Inicio</a>
+                    </li>
+                    <li><a href="#menu" class="hover:text-neutral-500 transition" data-i18n="footer.menu">Menú</a></li>
+                    <li><a href="#nosotros" class="hover:text-neutral-500 transition"
+                            data-i18n="footer.nosotros">Nosotros</a></li>
+                    <li><a href="#testimonios" class="hover:text-neutral-500 transition"
+                            data-i18n="footer.testimonios">Testimonios</a></li>
+                    <li><a href="#contacto" class="hover:text-neutral-500 transition"
+                            data-i18n="footer.contacto">Contacto</a></li>
                 </ul>
             </div>
 
             <!-- Contacto -->
             <div>
-                <h3 class="text-xl font-semibold mb-4">Contáctanos</h3>
-                <p class="text-sm">Calle 123, Bogotá, Colombia</p>
-                <p class="text-sm">Tel: +57 300 123 4567</p>
-                <p class="text-sm">Email: info@restaurante.com</p>
+                <h3 class="text-xl font-semibold mb-4" data-i18n="footer.contacto">Contáctanos</h3>
+                <p class="text-sm" data-i18n="footer.direccion">Calle 123, Bogotá, Colombia</p>
+                <p class="text-sm" data-i18n="footer.telefono">Tel: +57 300 123 4567</p>
+                <p class="text-sm" data-i18n="footer.email">Email: info@restaurante.com</p>
             </div>
 
             <!-- Redes sociales -->
             <div>
-                <h3 class="text-xl font-semibold mb-4">Síguenos</h3>
+                <h3 class="text-xl font-semibold mb-4" data-i18n="footer.siguenos">Síguenos</h3>
                 <div class="flex space-x-4">
                     <a href="#" aria-label="Facebook" class="hover:text-neutral-500 text-xl"><i
                             class="fab fa-facebook"></i></a>
@@ -319,9 +382,8 @@ Historial:
             </div>
         </div>
 
-        <div class="mt-10 text-center text-sm text-gray-400">
-            © 2025 Restaurante. Todos los derechos reservados. Diseñado por <a href="https://updevelop.com.co"
-                class="text-neutral-500 hover:underline">Up Develop</a>.
+        <div class="mt-10 text-center text-sm text-gray-400" data-i18n="footer.derechos">
+            <!-- Contenido será reemplazado dinámicamente -->
         </div>
     </footer>
 

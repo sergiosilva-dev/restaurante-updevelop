@@ -7,6 +7,7 @@ Historial:
 - 2025-07-18: Menú móvil y modo oscuro (localStorage).
 - 2025-07-24: Fix scroll en consola para enlaces vacíos.
 - 2025-07-25: Ajustes visuales en la página para modo oscuro y contacto con sus validaciones.
+- 2025-07-28: Implementación completa del sistema multilenguaje (i18n), placeholders y textos con HTML dinámico.
 */
 
 // Configuración básica de ScrollReveal
@@ -154,3 +155,103 @@ const validarMensaje = () => {
 // Escuchar eventos en tiempo real
 correoInput.addEventListener("input", validarCorreo);
 mensajeInput.addEventListener("input", validarMensaje);
+
+// Función auxiliar: fuera del DOMContentLoaded y antes de cambiarIdioma
+const obtenerTraduccion = (obj, clave) => {
+  return clave.split(".").reduce((o, i) => (o ? o[i] : null), obj);
+};
+
+// Función principal para cambiar idioma
+const cambiarIdioma = async (idioma) => {
+  try {
+    const respuesta = await fetch(`lang/${idioma}.json`);
+    const traducciones = await respuesta.json();
+
+    const elementos = document.querySelectorAll("[data-i18n]");
+
+    elementos.forEach((el) => {
+      const clave = el.dataset.i18n;
+      const texto = obtenerTraduccion(traducciones, clave);
+
+      if (texto) {
+        if (el.tagName.toLowerCase() === "meta" && el.name === "description") {
+          el.setAttribute("content", texto);
+        } else if (el.tagName.toLowerCase() === "title") {
+          document.title = texto;
+        } else {
+          // Si el texto incluye etiquetas HTML, usar innerHTML
+          if (texto.includes("<") && texto.includes(">")) {
+            el.innerHTML = texto;
+          } else {
+            el.textContent = texto;
+          }
+        }
+      }
+    });
+
+    // Traducción de atributos placeholder
+    const elementosPlaceholder = document.querySelectorAll(
+      "[data-i18n-placeholder]"
+    );
+    elementosPlaceholder.forEach((el) => {
+      const clave = el.dataset.i18nPlaceholder;
+      const texto = obtenerTraduccion(traducciones, clave);
+      if (texto) {
+        el.setAttribute("placeholder", texto);
+      }
+    });
+
+    localStorage.setItem("idioma", idioma);
+  } catch (error) {
+    console.error("Error al cargar idioma:", error);
+  }
+};
+
+// DOMContentLoaded y bandera
+document.addEventListener("DOMContentLoaded", () => {
+  const idiomaGuardado = localStorage.getItem("idioma") || "es";
+  cambiarIdioma(idiomaGuardado);
+
+  const banderaActual = document.getElementById("bandera-actual");
+  if (banderaActual) {
+    banderaActual.src =
+      idiomaGuardado === "en"
+        ? "https://flagcdn.com/w20/gb.png"
+        : "https://flagcdn.com/w20/es.png";
+  }
+});
+
+// Toggle visual del menú de idiomas
+document.addEventListener("DOMContentLoaded", () => {
+  const idiomaToggle = document.getElementById("idioma-toggle");
+  const idiomasMenu = document.getElementById("idiomas-menu");
+
+  idiomaToggle.addEventListener("click", (e) => {
+    e.stopPropagation(); // Previene cierre inmediato
+    idiomasMenu.classList.toggle("hidden");
+  });
+
+  // Cierra el menú si se hace clic fuera
+  document.addEventListener("click", (e) => {
+    if (!idiomasMenu.contains(e.target) && !idiomaToggle.contains(e.target)) {
+      idiomasMenu.classList.add("hidden");
+    }
+  });
+
+  // Manejador de cambio de idioma
+  idiomasMenu.querySelectorAll("button[data-idioma]").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const idioma = btn.getAttribute("data-idioma");
+      cambiarIdioma(idioma);
+
+      // Cambiar bandera actual visualmente
+      const banderaActual = document.getElementById("bandera-actual");
+      banderaActual.src =
+        idioma === "en"
+          ? "https://flagcdn.com/w40/gb.png"
+          : "https://flagcdn.com/w40/es.png";
+
+      idiomasMenu.classList.add("hidden"); // Ocultar menú
+    });
+  });
+});
