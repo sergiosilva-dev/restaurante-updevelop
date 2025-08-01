@@ -81,21 +81,23 @@ Este archivo contiene un registro estructurado y detallado de todos los cambios 
 
 ---
 
-### 🔜 Próxima versión (v2.0.0) – En desarrollo
+## [v1.2.0] - 2025-08-01
 
-📌 Implementaciones planificadas (según checklist actual):
+🧭 **Inicio de estructura multipágina**
 
-- Página de historia y filosofía del restaurante.
-- Sección de eventos, ofertas o promociones.
-- Mapa interactivo embebido (Google Maps).
-- Validación extendida con mensajes personalizados.
-- Carga diferida de imágenes (`lazy` loading).
-- Mejoras SEO avanzadas (Open Graph, Twitter Card, etc.).
-- Galería con Lightbox.
-- Páginas de error personalizadas.
-- Preparación para migración a entorno Vite o frameworks.
+### ✨ Agregado
+
+- Nueva página `menu.html` completamente funcional con todos los platos, estructura responsive y animaciones.
+- Filtro dinámico por categoría (`entradas`, `platos`, `postres`, `bebidas`) con `data-category` y URL query.
+- Tarjetas organizadas por sección con imágenes optimizadas y texto internacionalizable (`data-i18n`).
+- Redirección desde sección menú en `index.html` con query param.
+
+### 🛠️ Mejorado
+
+- Sección de menú en `index.html` actualizada a versión compatible con multipágina (`menu.html?categoria=...`).
+- Validación de integridad visual y funcionalidad en tema claro/oscuro y multilenguaje en ambas páginas.
 
 ---
 
 🧑‍💻 _Actualizado por: Sergio Silva – Up Develop_  
-📅 Última actualización: **2025-07-28**
+📅 Última actualización: **2025-08-01**

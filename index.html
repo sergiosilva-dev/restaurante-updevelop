@@ -9,12 +9,21 @@ Historial:
 - 2025-07-24: Logo, favicons, mejoras visuales, footer profesional, mobile-first.
 - 2025-07-25: Mejora en colores, tipografía, animaciones, accesibilidad, contacto.
 - 2025-07-28: Implementación completa del sistema multilenguaje (i18n), placeholders y textos con HTML dinámico.
+- 2025-08-01: Versión inicial de index.html como parte de multipágina.
 -->
 
 <!DOCTYPE html>
 <html lang="es">
 
 <head>
+    <script>
+        if (localStorage.getItem('theme') === 'dark') {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
+
     <!-- Metadatos -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -27,10 +36,8 @@ Historial:
     <meta name="keywords" content="restaurante, comida, menú, reservas, sitio web">
     <meta name="author" content="Sergio Silva">
 
-    <!-- Carga Tailwind primero -->
+    <!-- Tailwind CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-
-    <!-- Ahora sí configura Tailwind -->
     <script>
         tailwind.config = {
             darkMode: 'class',
@@ -41,13 +48,25 @@ Historial:
                         crema: '#fff8ec',
                         vino: '#7b2c2c',
                         dorado: '#d4af37',
+                        white: '#ffffff',
+                        neutral: {
+                            950: '#0a0a0a',
+                            900: '#171717',
+                            800: '#262626',
+                        },
+                        gray: {
+                            50: '#f9fafb',
+                            100: '#f3f4f6',
+                            200: '#e5e7eb',
+                            800: '#1f2937',
+                        }
                     },
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
-                        serif: ['Playfair Display', 'serif'],
+                        serif: ['Playfair Display', 'serif']
                     }
-                },
-            },
+                }
+            }
         }
     </script>
 
@@ -73,10 +92,6 @@ Historial:
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:wght@700&display=swap"
         rel="stylesheet">
-
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
 </head>
 
 <body class="font-sans text-gray-800 dark:text-gray-100 bg-white dark:bg-gray-950">
@@ -86,7 +101,7 @@ Historial:
         class="bg-white dark:bg-neutral-950 border-b border-gray-200 dark:border-gray-800 text-gray-800 dark:text-gray-100 transition-colors duration-300 ease-in-out shadow-md fixed w-full top-0 z-50">
         <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
             <!-- Logo y nombre -->
-            <a href="#" class="flex items-center space-x-2">
+            <a href="index.html" class="flex items-center space-x-2">
                 <img src="assets/icons/logo-light.png" alt="Logo Restaurante"
                     class="h-10 sm:h-12 w-auto block dark:hidden" />
                 <img src="assets/icons/logo-dark.png" alt="Logo Restaurante"
@@ -95,14 +110,16 @@ Historial:
 
             <!-- Menú desktop -->
             <ul class="hidden md:flex space-x-6 text-sm font-medium">
-                <li><a href="#inicio" data-i18n="nav.inicio"
+                <li><a href="index.html" data-i18n="nav.inicio"
                         class="px-4 py-2 hover:opacity-80 transition-opacity dark:hover:text-white">Inicio</a></li>
-                <li><a href="#menu" data-i18n="nav.menu" class="hover:text-neutral-500 transition">Menú</a></li>
-                <li><a href="#nosotros" data-i18n="nav.nosotros" class="hover:text-neutral-500 transition">Nosotros</a>
+                <li><a href="menu.html" data-i18n="nav.menu" class="hover:text-neutral-500 transition">Menú</a></li>
+                <li><a href="nosotros.html" data-i18n="nav.nosotros"
+                        class="hover:text-neutral-500 transition">Nosotros</a>
                 </li>
-                <li><a href="#testimonios" data-i18n="nav.testimonios"
+                <li><a href="testimonios.html" data-i18n="nav.testimonios"
                         class="hover:text-neutral-500 transition">Testimonios</a></li>
-                <li><a href="#contacto" data-i18n="nav.contacto" class="hover:text-neutral-500 transition">Contacto</a>
+                <li><a href="contacto.html" data-i18n="nav.contacto"
+                        class="hover:text-neutral-500 transition">Contacto</a>
                 </li>
             </ul>
 
@@ -115,13 +132,13 @@ Historial:
                     <i id="theme-icon" class="fas fa-moon"></i>
                 </button>
 
-                <!-- Selector de idioma con bandera mejorado -->
+                <!-- Selector de idioma -->
                 <div class="relative group">
                     <!-- Botón principal -->
                     <button id="idioma-toggle"
                         class="flex items-center gap-2 px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-white rounded shadow-sm hover:bg-gray-200 dark:hover:bg-gray-600 transition-all">
                         <img id="bandera-actual" src="https://flagcdn.com/w40/es.png" alt="Idioma actual"
-                            class="w-[20px] h-[14px] object-cover">
+                            class="w-[20px] h-[14px] object-cover" />
                     </button>
 
                     <!-- Menú de idiomas -->
@@ -152,12 +169,14 @@ Historial:
 
         <!-- Menú móvil (solo visible en móvil) -->
         <ul id="mobileMenu" class="md:hidden flex flex-col items-end space-y-2 pr-6 pb-4 hidden">
-            <li><a href="#inicio" data-i18n="nav.inicio" class="text-sm hover:text-neutral-500">Inicio</a></li>
-            <li><a href="#menu" data-i18n="nav.menu" class="text-sm hover:text-neutral-500">Menú</a></li>
-            <li><a href="#nosotros" data-i18n="nav.nosotros" class="text-sm hover:text-neutral-500">Nosotros</a></li>
-            <li><a href="#testimonios" data-i18n="nav.testimonios"
+            <li><a href="index.html" data-i18n="nav.inicio" class="text-sm hover:text-neutral-500">Inicio</a></li>
+            <li><a href="menu.html" data-i18n="nav.menu" class="text-sm hover:text-neutral-500">Menú</a></li>
+            <li><a href="nosotros.html" data-i18n="nav.nosotros" class="text-sm hover:text-neutral-500">Nosotros</a>
+            </li>
+            <li><a href="testimonios.html" data-i18n="nav.testimonios"
                     class="text-sm hover:text-neutral-500">Testimonios</a></li>
-            <li><a href="#contacto" data-i18n="nav.contacto" class="text-sm hover:text-neutral-500">Contacto</a></li>
+            <li><a href="contacto.html" data-i18n="nav.contacto" class="text-sm hover:text-neutral-500">Contacto</a>
+            </li>
         </ul>
     </header>
 
@@ -170,7 +189,7 @@ Historial:
                     despiertan tus sentidos</h1>
                 <p data-i18n="hero.subtitulo" class="text-lg md:text-xl mb-6">Descubre la experiencia gastronómica única
                     que tenemos para ti.</p>
-                <a href="#menu" data-i18n="hero.boton"
+                <a href="menu.html" data-i18n="hero.boton"
                     class="bg-neutral-500 hover:bg-neutral-600 dark:bg-neutral-900 dark:hover:bg-neutral-500 text-white font-semibold py-3 px-6 rounded shadow transition">Ver
                     menú</a>
             </div>
@@ -178,7 +197,7 @@ Historial:
     </section>
 
     <!-- Sección Menú -->
-    <section id="menu" class="py-20 bg-white dark:bg-neutral-900 text-gray-800 dark:text-white">
+    <section class="py-20 bg-white dark:bg-neutral-900 text-gray-800 dark:text-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 class="fade-in text-3xl font-bold mb-12" data-i18n="menu.titulo">Nuestro Menú</h2>
 
@@ -192,6 +211,9 @@ Historial:
                     <p class="text-gray-600 dark:text-gray-200" data-i18n="menu.entradasDesc">Deliciosos aperitivos para
                         comenzar tu experiencia
                         gastronómica.</p>
+                    <a href="menu.html?categoria=entradas"
+                        class="inline-block mt-4 px-4 py-2 bg-neutral-500 hover:bg-neutral-600 dark:bg-neutral-900 dark:hover:bg-neutral-500 text-white rounded transition"
+                        data-i18n="menu.boton">Ver más</a>
                 </article>
 
                 <!-- Platos fuertes -->
@@ -204,6 +226,9 @@ Historial:
                     <p class="text-gray-600 dark:text-gray-200" data-i18n="menu.platosDesc">Sabores principales
                         preparados con calidad y dedicación.
                     </p>
+                    <a href="menu.html?categoria=platos"
+                        class="inline-block mt-4 px-4 py-2 bg-neutral-500 hover:bg-neutral-600 dark:bg-neutral-900 dark:hover:bg-neutral-500 text-white rounded transition"
+                        data-i18n="menu.boton">Ver más</a>
                 </article>
 
                 <!-- Postres -->
@@ -214,6 +239,9 @@ Historial:
                         Postres</h3>
                     <p class="text-gray-600 dark:text-gray-200" data-i18n="menu.postresDesc">Dulces irresistibles para
                         cerrar con broche de oro.</p>
+                    <a href="menu.html?categoria=postres"
+                        class="inline-block mt-4 px-4 py-2 bg-neutral-500 hover:bg-neutral-600 dark:bg-neutral-900 dark:hover:bg-neutral-500 text-white rounded transition"
+                        data-i18n="menu.boton">Ver más</a>
                 </article>
             </div>
         </div>
@@ -260,7 +288,7 @@ Historial:
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Testimonio 1 -->
                 <article class="fade-in bg-gray-50 dark:bg-neutral-800 p-6 rounded-lg shadow-md text-left">
-                    <img src="assets/img/laura-gomez.jpg" alt="Laura Gómez"
+                    <img src="assets/img/testimonios/laura-gomez.jpg" alt="Laura Gómez"
                         class="w-16 h-16 rounded-full mx-auto mb-4 object-cover">
                     <h3 class="text-lg font-semibold text-neutral-500 dark:text-white"
                         data-i18n="testimonios.persona1.nombre">Laura Gómez</h3>
@@ -272,7 +300,7 @@ Historial:
 
                 <!-- Testimonio 2 -->
                 <article class="fade-in bg-gray-50 dark:bg-neutral-800 p-6 rounded-lg shadow-md text-left">
-                    <img src="assets/img/carlos-mendez.jpg" alt="Carlos Méndez"
+                    <img src="assets/img/testimonios/carlos-mendez.jpg" alt="Carlos Méndez"
                         class="w-16 h-16 rounded-full mx-auto mb-4 object-cover">
                     <h3 class="text-lg font-semibold text-neutral-500 dark:text-white"
                         data-i18n="testimonios.persona2.nombre">Carlos Méndez</h3>
@@ -284,7 +312,7 @@ Historial:
 
                 <!-- Testimonio 3 -->
                 <article class="fade-in bg-gray-50 dark:bg-neutral-800 p-6 rounded-lg shadow-md text-left">
-                    <img src="assets/img/valentina-ruiz.jpg" alt="Valentina Ruiz"
+                    <img src="assets/img/testimonios/valentina-ruiz.jpg" alt="Valentina Ruiz"
                         class="w-16 h-16 rounded-full mx-auto mb-4 object-cover">
                     <h3 class="text-lg font-semibold text-neutral-500 dark:text-white"
                         data-i18n="testimonios.persona3.nombre">Valentina Ruiz</h3>
@@ -348,14 +376,16 @@ Historial:
             <div>
                 <h3 class="text-xl font-semibold mb-4" data-i18n="footer.enlaces">Enlaces</h3>
                 <ul class="space-y-2 text-sm">
-                    <li><a href="#inicio" class="hover:text-neutral-500 transition" data-i18n="footer.inicio">Inicio</a>
+                    <li><a href="index.html" class="hover:text-neutral-500 transition"
+                            data-i18n="footer.inicio">Inicio</a>
                     </li>
-                    <li><a href="#menu" class="hover:text-neutral-500 transition" data-i18n="footer.menu">Menú</a></li>
-                    <li><a href="#nosotros" class="hover:text-neutral-500 transition"
+                    <li><a href="menu.html" class="hover:text-neutral-500 transition" data-i18n="footer.menu">Menú</a>
+                    </li>
+                    <li><a href="nosotros.html" class="hover:text-neutral-500 transition"
                             data-i18n="footer.nosotros">Nosotros</a></li>
-                    <li><a href="#testimonios" class="hover:text-neutral-500 transition"
+                    <li><a href="testimonios.html" class="hover:text-neutral-500 transition"
                             data-i18n="footer.testimonios">Testimonios</a></li>
-                    <li><a href="#contacto" class="hover:text-neutral-500 transition"
+                    <li><a href="contacto.html" class="hover:text-neutral-500 transition"
                             data-i18n="footer.contacto">Contacto</a></li>
                 </ul>
             </div>

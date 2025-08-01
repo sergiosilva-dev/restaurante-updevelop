@@ -1,6 +1,6 @@
 {
   "title": "Restaurant | Up Develop",
-  "metaDescription": "Modern and responsive website for a restaurant. Menu, location, contact and more.",
+  "metaDescription": "Modern and responsive restaurant website. Menu, location, contact, and more.",
   "nav": {
     "inicio": "Home",
     "menu": "Menu",
@@ -10,17 +10,79 @@
   },
   "hero": {
     "titulo": "Flavors that awaken your senses",
-    "subtitulo": "Discover the unique dining experience we have for you.",
-    "boton": "View Menu"
+    "subtitulo": "Discover the unique gastronomic experience we have for you.",
+    "boton": "View menu"
   },
   "menu": {
+    "title": "Menu | Up Develop",
+    "metaDescription": "Restaurant menu with a variety of delicious dishes. Explore our starters, main courses, desserts, and drinks.",
     "titulo": "Our Menu",
     "entradas": "Starters",
     "entradasDesc": "Delicious appetizers to start your gastronomic experience.",
-    "platos": "Main Dishes",
-    "platosDesc": "Main flavors prepared with quality and care.",
+    "platos": "Main Courses",
+    "platosDesc": "Main flavors prepared with quality and dedication.",
     "postres": "Desserts",
-    "postresDesc": "Irresistible sweets to end on a high note."
+    "postresDesc": "Irresistible sweets to finish off with a golden touch.",
+    "subtitulo": "Explore all our flavors",
+    "todos": "All",
+    "bebidas": "Drinks",
+    "boton": "View more",
+    "entradasCard": {
+      "bruschettas": "Classic Bruschettas",
+      "bruschettasDesc": "Toasted bread with tomato, garlic, and basil.",
+      "carpaccio": "Beef Carpaccio",
+      "carpaccioDesc": "Thin slices of beef with parmesan and arugula.",
+      "caprese": "Caprese Salad",
+      "capreseDesc": "Mozzarella, tomato, and fresh basil.",
+      "empanadas": "Gourmet Empanadas",
+      "empanadasDesc": "Stuffed with brie cheese and mushrooms.",
+      "patacones": "Patacones with Guacamole",
+      "pataconesDesc": "Crispy and served with homemade dip.",
+      "rollitos": "Vegetable Rolls",
+      "rollitosDesc": "Crispy rolls filled with sautéed vegetables and sweet-and-sour sauce."
+    },
+    "platosCard": {
+      "lomo": "Beef with Mushroom Sauce",
+      "lomoDesc": "Served with white rice and steamed potatoes.",
+      "parmesana": "Chicken Parmesan",
+      "parmesanaDesc": "Topped with melted cheese and tomato sauce, served with fresh salad.",
+      "pasta": "Carbonara Pasta",
+      "pastaDesc": "Spaghetti with creamy sauce, bacon, and parmesan cheese.",
+      "pescado": "Fish in Coconut Sauce",
+      "pescadoDesc": "Fish fillet in coconut sauce with coconut rice and patacones.",
+      "arroz": "Seafood Rice",
+      "arrozDesc": "Rice mixed with shrimp, squid, and mussels in Creole style.",
+      "pesto": "Pesto Chicken",
+      "pestoDesc": "Grilled chicken breast with pesto sauce and sautéed vegetables."
+    },
+    "postresCard": {
+      "tiramisu": "Tiramisu",
+      "tiramisuDesc": "Delicate Italian dessert with sponge cake, coffee, and mascarpone cream.",
+      "cheesecake": "Strawberry Cheesecake",
+      "cheesecakeDesc": "Creamy cheesecake topped with fresh strawberries.",
+      "helado": "Artisan Ice Cream",
+      "heladoDesc": "Variety of flavors made with 100% natural ingredients.",
+      "brownie": "Brownie with Walnuts",
+      "brownieDesc": "Dark chocolate brownie with walnut pieces and a scoop of ice cream.",
+      "flan": "Caramel Flan",
+      "flanDesc": "Traditional homemade flan with smooth caramel sauce.",
+      "mousse": "Chocolate Mousse",
+      "mousseDesc": "Airy chocolate mousse with a touch of whipped cream."
+    },
+    "bebidasCard": {
+      "jugoMango": "Natural Mango Juice",
+      "jugoMangoDesc": "Refreshing 100% natural juice with no added sugar.",
+      "limonadaHierbabuena": "Limeade with Mint",
+      "limonadaHierbabuenaDesc": "Cold limeade with a touch of fresh mint.",
+      "soda": "Artisan Soda",
+      "sodaDesc": "Naturally flavored soda, free of preservatives.",
+      "te": "Red Fruit Iced Tea",
+      "teDesc": "Lightly sweetened natural tea with red fruit aroma.",
+      "cafe": "Colombian Coffee",
+      "cafeDesc": "100% Colombian coffee prepared in a French press.",
+      "chocolate": "Hot Chocolate",
+      "chocolateDesc": "Hot drink made with melted artisan chocolate and milk."
+    }
   },
   "nosotros": {
     "titulo": "About Us",
@@ -28,14 +90,14 @@
     "descripcion2": "With fresh ingredients, traditional recipes, and a cozy atmosphere..."
   },
   "testimonios": {
-    "titulo": "What our clients say",
+    "titulo": "What our customers say",
     "persona1": {
       "nombre": "Laura Gómez",
-      "comentario": "The atmosphere is lovely and the food is amazing. I will definitely return soon."
+      "comentario": "The atmosphere is charming and the food is spectacular. I’ll definitely come back soon."
     },
     "persona2": {
       "nombre": "Carlos Méndez",
-      "comentario": "A unique experience. Exquisite dishes and first-class service."
+      "comentario": "A unique experience. Exquisite dishes and top-notch service."
     },
     "persona3": {
       "nombre": "Valentina Ruiz",
@@ -44,13 +106,13 @@
   },
   "contacto": {
     "titulo": "Contact Us",
-    "correo": "Email address",
+    "correo": "Email",
     "mensaje": "Message or request",
     "boton": "Send message",
     "exito": "Message sent successfully!",
     "errorCorreo": "Invalid email",
     "errorMensaje": "Message required",
-    "placeholderCorreo": "yourmail@example.com",
+    "placeholderCorreo": "youremail@example.com",
     "placeholderMensaje": "Write your message..."
   },
   "footer": {
@@ -61,7 +123,7 @@
     "testimonios": "Testimonials",
     "contacto": "Contact",
     "direccion": "123 Street, Bogotá, Colombia",
-    "telefono": "Tel: +57 300 123 4567",
+    "telefono": "Phone: +57 300 123 4567",
     "email": "Email: info@restaurante.com",
     "siguenos": "Follow us",
     "derechos": "© 2025 Restaurant. All rights reserved. Designed by <a href=\"https://updevelop.com.co\" class=\"text-neutral-500 hover:underline\">Up Develop</a>."

@@ -1,0 +1,546 @@
+<!--
+Autor: Sergio Silva
+Fecha: 2025-08-01
+Descripción: Página de menú del restaurante con estructura multipágina, filtros por categoría, diseño responsive, soporte multilenguaje y modo oscuro.
+Historial:
+- 2025-08-01: Versión inicial de menu.html como parte de multipágina.
+-->
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <script>
+        if (localStorage.getItem('theme') === 'dark') {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
+
+    <!-- Metadatos -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- SEO Básico -->
+    <title data-i18n="menu.title">Menú | Up Develop</title>
+    <meta name="description"
+        content="Menú del restaurante con una variedad de platos deliciosos. Explora nuestras entradas, platos fuertes, postres y bebidas."
+        data-i18n="menu.metaDescription" />
+    <meta name="keywords" content="restaurante, menú, entradas, platos fuertes, postres, bebidas" />
+    <meta name="author" content="Sergio Silva" />
+
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        rojo: '#e3342f',
+                        crema: '#fff8ec',
+                        vino: '#7b2c2c',
+                        dorado: '#d4af37',
+                        white: '#ffffff',
+                        neutral: {
+                            950: '#0a0a0a',
+                            900: '#171717',
+                            800: '#262626',
+                        },
+                        gray: {
+                            50: '#f9fafb',
+                            100: '#f3f4f6',
+                            200: '#e5e7eb',
+                            800: '#1f2937',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Íconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+        integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Favicon y App Icons -->
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/icons/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/icons/apple-touch-icon.png">
+    <link rel="icon" href="assets/icons/favicon.ico" type="image/x-icon">
+    <link rel="manifest" href="site.webmanifest" crossorigin="use-credentials">
+
+    <!-- Meta adicionales para PWA y móviles -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="Menú">
+    <meta name="application-name" content="Restaurante">
+    <meta name="theme-color" content="#ffffff">
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:wght@700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body class="font-sans text-gray-800 dark:text-gray-100 bg-white dark:bg-gray-950">
+
+    <!-- Navbar principal -->
+    <header
+        class="bg-white dark:bg-neutral-950 border-b border-gray-200 dark:border-gray-800 text-gray-800 dark:text-gray-100 transition-colors duration-300 ease-in-out shadow-md fixed w-full top-0 z-50">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
+            <!-- Logo y nombre -->
+            <a href="index.html" class="flex items-center space-x-2">
+                <img src="assets/icons/logo-light.png" alt="Logo Restaurante"
+                    class="h-10 sm:h-12 w-auto block dark:hidden" />
+                <img src="assets/icons/logo-dark.png" alt="Logo Restaurante"
+                    class="h-10 sm:h-12 w-auto hidden dark:block" />
+            </a>
+
+            <!-- Menú desktop -->
+            <ul class="hidden md:flex space-x-6 text-sm font-medium">
+                <li><a href="index.html" data-i18n="nav.inicio" class="hover:text-neutral-500 transition">Inicio</a>
+                </li>
+                <li><a href="menu.html" data-i18n="nav.menu"
+                        class="px-4 py-2 hover:opacity-80 transition-opacity dark:hover:text-white">Menú</a></li>
+                <li><a href="nosotros.html" data-i18n="nav.nosotros"
+                        class="hover:text-neutral-500 transition">Nosotros</a></li>
+                <li><a href="testimonios.html" data-i18n="nav.testimonios"
+                        class="hover:text-neutral-500 transition">Testimonios</a></li>
+                <li><a href="contacto.html" data-i18n="nav.contacto"
+                        class="hover:text-neutral-500 transition">Contacto</a></li>
+            </ul>
+
+            <!-- Íconos -->
+            <div class="flex items-center space-x-4">
+                <!-- Modo oscuro -->
+                <button id="theme-toggle"
+                    class="text-xl text-neutral-500 hover:text-neutral-900 dark:text-white dark:hover:text-neutral-500 transition-all"
+                    aria-label="Cambiar tema">
+                    <i id="theme-icon" class="fas fa-moon"></i>
+                </button>
+
+                <!-- Selector de idioma -->
+                <div class="relative group">
+                    <!-- Botón principal -->
+                    <button id="idioma-toggle"
+                        class="flex items-center gap-2 px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-white rounded shadow-sm hover:bg-gray-200 dark:hover:bg-gray-600 transition-all">
+                        <img id="bandera-actual" src="https://flagcdn.com/w40/es.png" alt="Idioma actual"
+                            class="w-[20px] h-[14px] object-cover" />
+                    </button>
+
+                    <!-- Menú de idiomas -->
+                    <div id="idiomas-menu"
+                        class="absolute right-0 mt-2 hidden bg-white dark:bg-gray-800 rounded shadow-lg p-2 z-50 w-32">
+                        <button data-idioma="es"
+                            class="flex items-center gap-2 px-2 py-1 rounded hover:bg-gray-100 dark:hover:bg-gray-700 w-full transition-all">
+                            <img src="https://flagcdn.com/w40/es.png" class="w-[20px] h-[14px] object-cover"
+                                alt="Español" />
+                            <span class="text-sm text-gray-800 dark:text-white">Español</span>
+                        </button>
+                        <button data-idioma="en"
+                            class="flex items-center gap-2 px-2 py-1 rounded hover:bg-gray-100 dark:hover:bg-gray-700 w-full transition-all">
+                            <img src="https://flagcdn.com/w40/gb.png" class="w-[20px] h-[14px] object-cover"
+                                alt="English" />
+                            <span class="text-sm text-gray-800 dark:text-white">English</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Hamburguesa -->
+                <button id="menuToggle"
+                    class="md:hidden text-2xl text-neutral-500 hover:text-neutral-900 dark:text-white dark:hover:text-neutral-500 focus:outline-none">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </nav>
+
+        <!-- Menú móvil (solo visible en móvil) -->
+        <ul id="mobileMenu" class="md:hidden flex flex-col items-end space-y-2 pr-6 pb-4 hidden">
+            <li><a href="index.html" data-i18n="nav.inicio" class="text-sm hover:text-neutral-500">Inicio</a></li>
+            <li><a href="menu.html" data-i18n="nav.menu" class="text-sm hover:text-neutral-500">Menú</a></li>
+            <li><a href="nosotros.html" data-i18n="nav.nosotros" class="text-sm hover:text-neutral-500">Nosotros</a>
+            </li>
+            <li><a href="testimonios.html" data-i18n="nav.testimonios"
+                    class="text-sm hover:text-neutral-500">Testimonios</a></li>
+            <li><a href="contacto.html" data-i18n="nav.contacto" class="text-sm hover:text-neutral-500">Contacto</a>
+            </li>
+        </ul>
+    </header>
+
+    <!-- Contenido principal -->
+    <main class="py-20 bg-white dark:bg-neutral-900 text-gray-800 dark:text-white">
+        <section id="menu" class="py-12">
+            <h2 class="text-3xl font-bold text-center mb-2" data-i18n="menu.titulo">Nuestro Menú</h2>
+            <p class="text-center text-gray-800 dark:text-gray-100 mb-6" data-i18n="menu.subtitulo">Explora todos
+                nuestros sabores</p>
+
+            <!-- Filtros -->
+            <div class="flex justify-center gap-4 mb-8 flex-wrap">
+                <button data-category="all"
+                    class="filter-btn font-semibold text-sm border-b-2 border-transparent hover:border-black dark:hover:border-white active"
+                    data-i18n="menu.todos">
+                    Todos
+                </button>
+                <button data-category="entradas" class="filter-btn text-sm hover:underline"
+                    data-i18n="menu.entradas">Entradas</button>
+                <button data-category="platos" class="filter-btn text-sm hover:underline" data-i18n="menu.platos">Platos
+                    Fuertes</button>
+                <button data-category="postres" class="filter-btn text-sm hover:underline"
+                    data-i18n="menu.postres">Postres</button>
+                <button data-category="bebidas" class="filter-btn text-sm hover:underline"
+                    data-i18n="menu.bebidas">Bebidas</button>
+            </div>
+
+            <!-- Grid de platos -->
+            <div id="menuGrid" class="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 px-4 md:px-16 text-center">
+                <!-- Entradas -->
+
+                <!-- Card 1 -->
+                <article
+                    class="fade-in menu-card bg-gray-100 dark:bg-neutral-800 p-4 rounded-lg shadow hover:shadow-lg max-w-md mx-auto w-full transition"
+                    data-category="entradas">
+                    <img src="assets/img/entradas/bruschettas_clasicas.jpg"
+                        class="w-full h-80 object-cover rounded mb-4" />
+                    <h3 class="font-semibold text-lg" data-i18n="menu.entradasCard.bruschettas">Bruschettas clásicas
+                    </h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-300" data-i18n="menu.entradasCard.bruschettasDesc">
+                        Pan tostado con tomate, ajo y albahaca.</p>
+                </article>
+
+                <!-- Card 2 -->
+                <article
+                    class="fade-in menu-card bg-gray-100 dark:bg-neutral-800 p-4 rounded-lg shadow hover:shadow-lg max-w-md mx-auto w-full transition"
+                    data-category="entradas">
+                    <img src="assets/img/entradas/carpaccio.jpg" class="w-full h-80 object-cover rounded mb-4" />
+                    <h3 class="font-semibold text-lg" data-i18n="menu.entradasCard.carpaccio">Carpaccio de res</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-300" data-i18n="menu.entradasCard.carpaccioDesc">
+                        Finas láminas de res con parmesano y rúgula.</p>
+                </article>
+
+                <!-- Card 3 -->
+                <article
+                    class="fade-in menu-card bg-gray-100 dark:bg-neutral-800 p-4 rounded-lg shadow hover:shadow-lg max-w-md mx-auto w-full transition"
+                    data-category="entradas">
+                    <img src="assets/img/entradas/ensalada_caprese.jpg" class="w-full h-80 object-cover rounded mb-4" />
+                    <h3 class="font-semibold text-lg" data-i18n="menu.entradasCard.caprese">Ensalada Caprese</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-300" data-i18n="menu.entradasCard.capreseDesc">
+                        Mozzarella, tomate y albahaca fresca.</p>
+                </article>
+
+                <!-- Card 4 -->
+                <article
+                    class="fade-in menu-card bg-gray-100 dark:bg-neutral-800 p-4 rounded-lg shadow hover:shadow-lg max-w-md mx-auto w-full transition"
+                    data-category="entradas">
+                    <img src="assets/img/entradas/empanadas_gourmet.jpg"
+                        class="w-full h-80 object-cover rounded mb-4" />
+                    <h3 class="font-semibold text-lg" data-i18n="menu.entradasCard.empanadas">Empanadas gourmet</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-300" data-i18n="menu.entradasCard.empanadasDesc">
+                        Rellenas de queso brie y champiñones.</p>
+                </article>
+
+                <!-- Card 5 -->
+                <article
+                    class="fade-in menu-card bg-gray-100 dark:bg-neutral-800 p-4 rounded-lg shadow hover:shadow-lg max-w-md mx-auto w-full transition"
+                    data-category="entradas">
+                    <img src="assets/img/entradas/patacones.jpg" class="w-full h-80 object-cover rounded mb-4" />
+                    <h3 class="font-semibold text-lg" data-i18n="menu.entradasCard.patacones">Patacones con guacamole
+                    </h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-300" data-i18n="menu.entradasCard.pataconesDesc">
+                        Crujientes y acompañados de dip casero.</p>
+                </article>
+
+                <!-- Card 6 -->
+                <article
+                    class="fade-in menu-card bg-gray-100 dark:bg-neutral-800 p-4 rounded-lg shadow hover:shadow-lg max-w-md mx-auto w-full transition"
+                    data-category="entradas">
+                    <img src="assets/img/entradas/rollitos_vegetales.jpg"
+                        class="w-full h-80 object-cover rounded mb-4" />
+                    <h3 class="font-semibold text-lg" data-i18n="menu.entradasCard.rollitos">Rollitos vegetales</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-300" data-i18n="menu.entradasCard.rollitosDesc">
+                        Crujientes rollitos rellenos de vegetales
+                        salteados con salsa agridulce.</p>
+                </article>
+                <!-- Platos Fuertes -->
+
+                <!-- Card 1 -->
+                <article
+                    class="fade-in menu-card bg-gray-100 dark:bg-neutral-800 p-4 rounded-lg shadow hover:shadow-lg max-w-md mx-auto w-full transition"
+                    data-category="platos">
+                    <img src="assets/img/platos_fuertes/lomo_salsa_champiñones.jpg"
+                        class="w-full h-80 object-cover rounded mb-4" />
+                    <h3 class="font-semibold text-lg" data-i18n="menu.platosCard.lomo">Lomo en salsa de champiñones</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-300" data-i18n="menu.platosCard.lomoDesc">Acompañado
+                        de
+                        arroz blanco y papas al vapor.</p>
+                </article>
+
+                <!-- Card 2 -->
+                <article
+                    class="fade-in menu-card bg-gray-100 dark:bg-neutral-800 p-4 rounded-lg shadow hover:shadow-lg max-w-md mx-auto w-full transition"
+                    data-category="platos">
+                    <img src="assets/img/platos_fuertes/pollo_parmesana.jpg"
+                        class="w-full h-80 object-cover rounded mb-4" />
+                    <h3 class="font-semibold text-lg" data-i18n="menu.platosCard.parmesana">Pollo a la parmesana</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-300" data-i18n="menu.platosCard.parmesanaDesc">
+                        Cubierto
+                        con queso fundido y salsa de tomate,
+                        acompañado de ensalada fresca.</p>
+                </article>
+
+                <!-- Card 3 -->
+                <article
+                    class="fade-in menu-card bg-gray-100 dark:bg-neutral-800 p-4 rounded-lg shadow hover:shadow-lg max-w-md mx-auto w-full transition"
+                    data-category="platos">
+                    <img src="assets/img/platos_fuertes/pasta_carbonara.jpg"
+                        class="w-full h-80 object-cover rounded mb-4" />
+                    <h3 class="font-semibold text-lg" data-i18n="menu.platosCard.pasta">Pasta carbonara</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-300" data-i18n="menu.platosCard.pastaDesc">Espaguetis
+                        con
+                        salsa cremosa, tocineta y queso
+                        parmesano.</p>
+                </article>
+
+                <!-- Card 4 -->
+                <article
+                    class="fade-in menu-card bg-gray-100 dark:bg-neutral-800 p-4 rounded-lg shadow hover:shadow-lg max-w-md mx-auto w-full transition"
+                    data-category="platos">
+                    <img src="assets/img/platos_fuertes/pescado_coco.jpg"
+                        class="w-full h-80 object-cover rounded mb-4" />
+                    <h3 class="font-semibold text-lg" data-i18n="menu.platosCard.pescado">Pescado en salsa de coco</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-300" data-i18n="menu.platosCard.pescadoDesc">Filete
+                        de pescado bañado en salsa de coco con
+                        arroz con coco y patacones.</p>
+                </article>
+
+                <!-- Card 5 -->
+                <article
+                    class="fade-in menu-card bg-gray-100 dark:bg-neutral-800 p-4 rounded-lg shadow hover:shadow-lg max-w-md mx-auto w-full transition"
+                    data-category="platos">
+                    <img src="assets/img/platos_fuertes/arroz_mariscos.jpg"
+                        class="w-full h-80 object-cover rounded mb-4" />
+                    <h3 class="font-semibold text-lg" data-i18n="menu.platosCard.arroz">Arroz con mariscos</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-300" data-i18n="menu.platosCard.arrozDesc">Mezcla de
+                        arroz con camarones, calamares y
+                        mejillones al estilo criollo.</p>
+                </article>
+
+                <!-- Card 6 -->
+                <article
+                    class="fade-in menu-card bg-gray-100 dark:bg-neutral-800 p-4 rounded-lg shadow hover:shadow-lg max-w-md mx-auto w-full transition"
+                    data-category="platos">
+                    <img src="assets/img/platos_fuertes/pollo_pesto.jpg"
+                        class="w-full h-80 object-cover rounded mb-4" />
+                    <h3 class="font-semibold text-lg" data-i18n="menu.platosCard.pesto">Pollo al pesto</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-300" data-i18n="menu.platosCard.pestoDesc">Pechuga de
+                        pollo a la plancha con salsa de pesto
+                        y guarnición de vegetales.</p>
+                </article>
+                <!-- Postres -->
+
+                <!-- Card 1 -->
+                <article
+                    class="fade-in menu-card bg-gray-100 dark:bg-neutral-800 p-4 rounded-lg shadow hover:shadow-lg max-w-md mx-auto w-full transition"
+                    data-category="postres">
+                    <img src="assets/img/postres/tiramisu.jpg" class="w-full h-80 object-cover rounded mb-4" />
+                    <h3 class="font-semibold text-lg" data-i18n="menu.postresCard.tiramisu">Tiramisú</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-300" data-i18n="menu.postresCard.tiramisuDesc">
+                        Delicado
+                        postre italiano con capas de bizcocho,
+                        café y crema de mascarpone.</p>
+                </article>
+
+                <!-- Card 2 -->
+                <article
+                    class="fade-in menu-card bg-gray-100 dark:bg-neutral-800 p-4 rounded-lg shadow hover:shadow-lg max-w-md mx-auto w-full transition"
+                    data-category="postres">
+                    <img src="assets/img/postres/cheesecake_fresa.jpg" class="w-full h-80 object-cover rounded mb-4" />
+                    <h3 class="font-semibold text-lg" data-i18n="menu.postresCard.cheesecake">Cheesecake de fresa</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-300" data-i18n="menu.postresCard.cheesecakeDesc">
+                        Tarta
+                        de
+                        queso cremosa con cobertura de fresas
+                        naturales.</p>
+                </article>
+
+                <!-- Card 3 -->
+                <article
+                    class="fade-in menu-card bg-gray-100 dark:bg-neutral-800 p-4 rounded-lg shadow hover:shadow-lg max-w-md mx-auto w-full transition"
+                    data-category="postres">
+                    <img src="assets/img/postres/helado_artesanal.jpg" class="w-full h-80 object-cover rounded mb-4" />
+                    <h3 class="font-semibold text-lg" data-i18n="menu.postresCard.helado">Helado artesanal</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-300" data-i18n="menu.postresCard.heladoDesc">Variedad
+                        de sabores elaborados con ingredientes
+                        100% naturales.</p>
+                </article>
+
+                <!-- Card 4 -->
+                <article
+                    class="fade-in menu-card bg-gray-100 dark:bg-neutral-800 p-4 rounded-lg shadow hover:shadow-lg max-w-md mx-auto w-full transition"
+                    data-category="postres">
+                    <img src="assets/img/postres/brownie_nuez.jpg" class="w-full h-80 object-cover rounded mb-4" />
+                    <h3 class="font-semibold text-lg" data-i18n="menu.postresCard.brownie">Brownie con nuez</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-300" data-i18n="menu.postresCard.brownieDesc">
+                        Bizcocho
+                        de
+                        chocolate oscuro con trozos de nuez
+                        y acompañamiento de helado.</p>
+                </article>
+
+                <!-- Card 5 -->
+                <article
+                    class="fade-in menu-card bg-gray-100 dark:bg-neutral-800 p-4 rounded-lg shadow hover:shadow-lg max-w-md mx-auto w-full transition"
+                    data-category="postres">
+                    <img src="assets/img/postres/flan_caramelo.jpg" class="w-full h-80 object-cover rounded mb-4" />
+                    <h3 class="font-semibold text-lg" data-i18n="menu.postresCard.flan">Flan de caramelo</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-300" data-i18n="menu.postresCard.flanDesc">
+                        Tradicional
+                        flan casero con salsa de caramelo
+                        suave.</p>
+                </article>
+
+                <!-- Card 6 -->
+                <article
+                    class="fade-in menu-card bg-gray-100 dark:bg-neutral-800 p-4 rounded-lg shadow hover:shadow-lg max-w-md mx-auto w-full transition"
+                    data-category="postres">
+                    <img src="assets/img/postres/mousse_chocolate.jpg" class="w-full h-80 object-cover rounded mb-4" />
+                    <h3 class="font-semibold text-lg" data-i18n="menu.postresCard.mousse">Mousse de chocolate</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-300" data-i18n="menu.postresCard.mousseDesc">Textura
+                        aireada de chocolate negro con un toque
+                        de crema batida.</p>
+                </article>
+                <!-- Bebidas -->
+
+                <!-- Card 1 -->
+                <article
+                    class="fade-in menu-card bg-gray-100 dark:bg-neutral-800 p-4 rounded-lg shadow hover:shadow-lg max-w-md mx-auto w-full transition"
+                    data-category="bebidas">
+                    <img src="assets/img/bebidas/jugo_natural_mango.jpg"
+                        class="w-full h-80 object-cover rounded mb-4" />
+                    <h3 class="font-semibold text-lg" data-i18n="menu.bebidasCard.jugoMango">Jugo natural de mango</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-300" data-i18n="menu.bebidasCard.jugoMangoDesc">
+                        Refrescante jugo 100% natural sin azúcar
+                        añadida.</p>
+                </article>
+
+                <!-- Card 2 -->
+                <article
+                    class="fade-in menu-card bg-gray-100 dark:bg-neutral-800 p-4 rounded-lg shadow hover:shadow-lg max-w-md mx-auto w-full transition"
+                    data-category="bebidas">
+                    <img src="assets/img/bebidas/limonada_hierbabuena.jpg"
+                        class="w-full h-80 object-cover rounded mb-4" />
+                    <h3 class="font-semibold text-lg" data-i18n="menu.bebidasCard.limonadaHierbabuena">Limonada con
+                        hierbabuena</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-300"
+                        data-i18n="menu.bebidasCard.limonadaHierbabuenaDesc">Limonada fría con un toque de hierbabuena
+                        fresca.</p>
+                </article>
+
+                <!-- Card 3 -->
+                <article
+                    class="fade-in menu-card bg-gray-100 dark:bg-neutral-800 p-4 rounded-lg shadow hover:shadow-lg max-w-md mx-auto w-full transition"
+                    data-category="bebidas">
+                    <img src="assets/img/bebidas/soda_artesanal.jpg" class="w-full h-80 object-cover rounded mb-4" />
+                    <h3 class="font-semibold text-lg" data-i18n="menu.bebidasCard.soda">Soda artesanal</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-300" data-i18n="menu.bebidasCard.sodaDesc">Bebida
+                        gaseosa de sabores naturales, sin
+                        conservantes.</p>
+                </article>
+
+                <!-- Card 4 -->
+                <article
+                    class="fade-in menu-card bg-gray-100 dark:bg-neutral-800 p-4 rounded-lg shadow hover:shadow-lg max-w-md mx-auto w-full transition"
+                    data-category="bebidas">
+                    <img src="assets/img/bebidas/te_frio.jpg" class="w-full h-80 object-cover rounded mb-4" />
+                    <h3 class="font-semibold text-lg" data-i18n="menu.bebidasCard.te">Té frío de frutos rojos</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-300" data-i18n="menu.bebidasCard.teDesc">Té natural
+                        endulzado ligeramente con aroma de
+                        frutos rojos.</p>
+                </article>
+
+                <!-- Card 5 -->
+                <article
+                    class="fade-in menu-card bg-gray-100 dark:bg-neutral-800 p-4 rounded-lg shadow hover:shadow-lg max-w-md mx-auto w-full transition"
+                    data-category="bebidas">
+                    <img src="assets/img/bebidas/cafe_colombiano.jpg" class="w-full h-80 object-cover rounded mb-4" />
+                    <h3 class="font-semibold text-lg" data-i18n="menu.bebidasCard.cafe">Café colombiano</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-300" data-i18n="menu.bebidasCard.cafeDesc">Café 100%
+                        colombiano preparado en prensa
+                        francesa.</p>
+                </article>
+
+                <!-- Card 6 -->
+                <article
+                    class="fade-in menu-card bg-gray-100 dark:bg-neutral-800 p-4 rounded-lg shadow hover:shadow-lg max-w-md mx-auto w-full transition"
+                    data-category="bebidas">
+                    <img src="assets/img/bebidas/chocolate_caliente.jpg"
+                        class="w-full h-80 object-cover rounded mb-4" />
+                    <h3 class="font-semibold text-lg" data-i18n="menu.bebidasCard.chocolate">Chocolate caliente</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-300" data-i18n="menu.bebidasCard.chocolateDesc">
+                        Bebida caliente con chocolate artesanal
+                        derretido y leche.</p>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-neutral-900 dark:bg-neutral-950 text-white py-10">
+        <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-3 gap-8">
+            <!-- Enlaces -->
+            <div>
+                <h3 class="text-xl font-semibold mb-4" data-i18n="footer.enlaces">Enlaces</h3>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="index.html" class="hover:text-neutral-500 transition"
+                            data-i18n="footer.inicio">Inicio</a>
+                    </li>
+                    <li><a href="menu.html" class="hover:text-neutral-500 transition" data-i18n="footer.menu">Menú</a>
+                    </li>
+                    <li><a href="nosotros.html" class="hover:text-neutral-500 transition"
+                            data-i18n="footer.nosotros">Nosotros</a></li>
+                    <li><a href="testimonios.html" class="hover:text-neutral-500 transition"
+                            data-i18n="footer.testimonios">Testimonios</a></li>
+                    <li><a href="contacto.html" class="hover:text-neutral-500 transition"
+                            data-i18n="footer.contacto">Contacto</a></li>
+                </ul>
+            </div>
+
+            <!-- Contacto -->
+            <div>
+                <h3 class="text-xl font-semibold mb-4" data-i18n="footer.contacto">Contáctanos</h3>
+                <p class="text-sm" data-i18n="footer.direccion">Calle 123, Bogotá, Colombia</p>
+                <p class="text-sm" data-i18n="footer.telefono">Tel: +57 300 123 4567</p>
+                <p class="text-sm" data-i18n="footer.email">Email: info@restaurante.com</p>
+            </div>
+
+            <!-- Redes sociales -->
+            <div>
+                <h3 class="text-xl font-semibold mb-4" data-i18n="footer.siguenos">Síguenos</h3>
+                <div class="flex space-x-4">
+                    <a href="#" aria-label="Facebook" class="hover:text-neutral-500 text-xl"><i
+                            class="fab fa-facebook"></i></a>
+                    <a href="#" aria-label="Instagram" class="hover:text-neutral-500 text-xl"><i
+                            class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Twitter" class="hover:text-neutral-500 text-xl"><i
+                            class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-10 text-center text-sm text-gray-400" data-i18n="footer.derechos">
+            <!-- Contenido será reemplazado dinámicamente -->
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="js/main.js" defer></script>
+</body>
+
+</html>

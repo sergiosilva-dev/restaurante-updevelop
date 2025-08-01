@@ -10,7 +10,7 @@ Historial:
 - 2025-07-28: Implementación completa del sistema multilenguaje (i18n), placeholders y textos con HTML dinámico.
 */
 
-// Configuración básica de ScrollReveal
+// Animaciones con ScrollReveal
 ScrollReveal().reveal(".fade-in", {
   duration: 1000,
   distance: "40px",
@@ -19,20 +19,15 @@ ScrollReveal().reveal(".fade-in", {
   reset: false,
 });
 
-// Scroll activo en navbar (highlight de enlaces al hacer scroll)
+// Navbar scroll activo
 const links = document.querySelectorAll("nav a");
 window.addEventListener("scroll", () => {
   const fromTop = window.scrollY;
-
   links.forEach((link) => {
     const hash = link.hash;
-
     if (!hash) return;
-
     const section = document.querySelector(hash);
-
     if (!section) return;
-
     if (
       section.offsetTop <= fromTop + 80 &&
       section.offsetTop + section.offsetHeight > fromTop + 80
@@ -44,152 +39,67 @@ window.addEventListener("scroll", () => {
   });
 });
 
-// Menú móvil toggle
+// Menú móvil
 const toggleBtn = document.getElementById("menuToggle");
 const mobileMenu = document.getElementById("mobileMenu");
+if (toggleBtn && mobileMenu) {
+  toggleBtn.addEventListener("click", () => {
+    mobileMenu.classList.toggle("hidden");
+  });
+}
 
-toggleBtn.addEventListener("click", () => {
-  mobileMenu.classList.toggle("hidden");
-});
-
-// Cambiar tema y guardar preferencia
+// Modo oscuro
 document.addEventListener("DOMContentLoaded", () => {
   const toggleBtn = document.getElementById("theme-toggle");
   const themeIcon = document.getElementById("theme-icon");
 
-  // Aplicar tema guardado
-  if (localStorage.getItem("theme") === "dark") {
-    document.body.classList.add("dark");
-    themeIcon.classList.remove("fa-moon");
-    themeIcon.classList.add("fa-sun");
-  }
-
-  toggleBtn.addEventListener("click", () => {
-    document.body.classList.toggle("dark");
-
-    if (document.body.classList.contains("dark")) {
-      themeIcon.classList.remove("fa-moon");
-      themeIcon.classList.add("fa-sun");
-      localStorage.setItem("theme", "dark");
-    } else {
-      themeIcon.classList.remove("fa-sun");
-      themeIcon.classList.add("fa-moon");
-      localStorage.setItem("theme", "light");
+  if (toggleBtn && themeIcon) {
+    if (localStorage.getItem("theme") === "dark") {
+      document.documentElement.classList.add("dark");
+      themeIcon.classList.replace("fa-moon", "fa-sun");
     }
-  });
-});
 
-const form = document.getElementById("form-contacto");
-const mensaje = document.getElementById("form-mensaje");
-
-form.addEventListener("submit", async (e) => {
-  e.preventDefault();
-
-  // Validación previa antes de enviar
-  const correoOk = validarCorreo();
-  const mensajeOk = validarMensaje();
-  if (!correoOk || !mensajeOk) return;
-
-  // Enviar datos al endpoint de Formspree
-  const data = new FormData(form);
-  const res = await fetch(form.action, {
-    method: form.method,
-    body: data,
-    headers: {
-      Accept: "application/json",
-    },
-  });
-
-  // Mostrar mensaje de éxito si fue enviado correctamente
-  if (res.ok) {
-    form.reset();
-    mensaje.classList.remove("hidden");
-    setTimeout(() => mensaje.classList.add("hidden"), 5000);
+    toggleBtn.addEventListener("click", () => {
+      const isDark = document.documentElement.classList.toggle("dark");
+      themeIcon.classList.toggle("fa-sun", isDark);
+      themeIcon.classList.toggle("fa-moon", !isDark);
+      localStorage.setItem("theme", isDark ? "dark" : "light");
+    });
   }
 });
 
-// Inputs y mensajes de error
-const correoInput = document.getElementById("correo");
-const mensajeInput = document.getElementById("mensaje");
+// Función auxiliar para claves anidadas
+const obtenerTraduccion = (obj, clave) =>
+  clave.split(".").reduce((o, i) => (o ? o[i] : null), obj);
 
-const errorCorreo = document.getElementById("error-correo");
-const errorMensaje = document.getElementById("error-mensaje");
-
-// Validar campo correo electrónico
-const validarCorreo = () => {
-  const email = correoInput.value.trim();
-  const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  const valido = regex.test(email);
-
-  if (!valido) {
-    correoInput.classList.add("border-red-500", "ring-1", "ring-red-500");
-    correoInput.classList.remove("border-green-500", "ring-green-500");
-    errorCorreo.classList.remove("hidden");
-  } else {
-    correoInput.classList.remove("border-red-500", "ring-red-500");
-    correoInput.classList.add("border-green-500", "ring-1", "ring-green-500");
-    errorCorreo.classList.add("hidden");
-  }
-
-  return valido;
-};
-
-// Validar campo mensaje
-const validarMensaje = () => {
-  const msg = mensajeInput.value.trim();
-  const valido = msg.length > 3;
-
-  if (!valido) {
-    mensajeInput.classList.add("border-red-500", "ring-1", "ring-red-500");
-    mensajeInput.classList.remove("border-green-500", "ring-green-500");
-    errorMensaje.classList.remove("hidden");
-  } else {
-    mensajeInput.classList.remove("border-red-500", "ring-red-500");
-    mensajeInput.classList.add("border-green-500", "ring-1", "ring-green-500");
-    errorMensaje.classList.add("hidden");
-  }
-
-  return valido;
-};
-
-// Escuchar eventos en tiempo real
-correoInput.addEventListener("input", validarCorreo);
-mensajeInput.addEventListener("input", validarMensaje);
-
-// Función auxiliar: fuera del DOMContentLoaded y antes de cambiarIdioma
-const obtenerTraduccion = (obj, clave) => {
-  return clave.split(".").reduce((o, i) => (o ? o[i] : null), obj);
-};
-
-// Función principal para cambiar idioma
+// Cambiar idioma
 const cambiarIdioma = async (idioma) => {
   try {
-    const respuesta = await fetch(`lang/${idioma}.json`);
-    const traducciones = await respuesta.json();
+    const res = await fetch(`lang/${idioma}.json`);
+    const traducciones = await res.json();
 
+    // data-i18n
     const elementos = document.querySelectorAll("[data-i18n]");
-
     elementos.forEach((el) => {
       const clave = el.dataset.i18n;
       const texto = obtenerTraduccion(traducciones, clave);
-
       if (texto) {
-        if (el.tagName.toLowerCase() === "meta" && el.name === "description") {
-          el.setAttribute("content", texto);
-        } else if (el.tagName.toLowerCase() === "title") {
+        if (el.tagName.toLowerCase() === "title") {
           document.title = texto;
+        } else if (
+          el.tagName.toLowerCase() === "meta" &&
+          el.name === "description"
+        ) {
+          el.setAttribute("content", texto);
+        } else if (texto.includes("<") && texto.includes(">")) {
+          el.innerHTML = texto;
         } else {
-          // Si el texto incluye etiquetas HTML, usar innerHTML
-          if (texto.includes("<") && texto.includes(">")) {
-            el.innerHTML = texto;
-          } else {
-            el.textContent = texto;
-          }
+          el.textContent = texto;
         }
       }
     });
 
-    // Traducción de atributos placeholder
+    // data-i18n-placeholder
     const elementosPlaceholder = document.querySelectorAll(
       "[data-i18n-placeholder]"
     );
@@ -201,13 +111,14 @@ const cambiarIdioma = async (idioma) => {
       }
     });
 
+    // Guardar idioma
     localStorage.setItem("idioma", idioma);
-  } catch (error) {
-    console.error("Error al cargar idioma:", error);
+  } catch (err) {
+    console.error("Error al cambiar idioma:", err);
   }
 };
 
-// DOMContentLoaded y bandera
+// Cargar idioma inicial
 document.addEventListener("DOMContentLoaded", () => {
   const idiomaGuardado = localStorage.getItem("idioma") || "es";
   cambiarIdioma(idiomaGuardado);
@@ -216,42 +127,131 @@ document.addEventListener("DOMContentLoaded", () => {
   if (banderaActual) {
     banderaActual.src =
       idiomaGuardado === "en"
-        ? "https://flagcdn.com/w20/gb.png"
-        : "https://flagcdn.com/w20/es.png";
+        ? "https://flagcdn.com/w40/gb.png"
+        : "https://flagcdn.com/w40/es.png";
   }
 });
 
-// Toggle visual del menú de idiomas
+// Toggle menú de idioma
 document.addEventListener("DOMContentLoaded", () => {
   const idiomaToggle = document.getElementById("idioma-toggle");
   const idiomasMenu = document.getElementById("idiomas-menu");
 
-  idiomaToggle.addEventListener("click", (e) => {
-    e.stopPropagation(); // Previene cierre inmediato
-    idiomasMenu.classList.toggle("hidden");
-  });
+  if (idiomaToggle && idiomasMenu) {
+    idiomaToggle.addEventListener("click", (e) => {
+      e.stopPropagation();
+      idiomasMenu.classList.toggle("hidden");
+    });
 
-  // Cierra el menú si se hace clic fuera
-  document.addEventListener("click", (e) => {
-    if (!idiomasMenu.contains(e.target) && !idiomaToggle.contains(e.target)) {
-      idiomasMenu.classList.add("hidden");
+    document.addEventListener("click", (e) => {
+      if (!idiomasMenu.contains(e.target) && !idiomaToggle.contains(e.target)) {
+        idiomasMenu.classList.add("hidden");
+      }
+    });
+
+    idiomasMenu.querySelectorAll("button[data-idioma]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const idioma = btn.getAttribute("data-idioma");
+        cambiarIdioma(idioma);
+
+        const banderaActual = document.getElementById("bandera-actual");
+        if (banderaActual) {
+          banderaActual.src =
+            idioma === "en"
+              ? "https://flagcdn.com/w40/gb.png"
+              : "https://flagcdn.com/w40/es.png";
+        }
+
+        idiomasMenu.classList.add("hidden");
+      });
+    });
+  }
+});
+
+// Formulario (si existe)
+const form = document.getElementById("form-contacto");
+const mensaje = document.getElementById("form-mensaje");
+const correoInput = document.getElementById("correo");
+const mensajeInput = document.getElementById("mensaje");
+const errorCorreo = document.getElementById("error-correo");
+const errorMensaje = document.getElementById("error-mensaje");
+
+if (form && correoInput && mensajeInput) {
+  const validarCorreo = () => {
+    const email = correoInput.value.trim();
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const valido = regex.test(email);
+    correoInput.classList.toggle("border-red-500", !valido);
+    correoInput.classList.toggle("ring-red-500", !valido);
+    correoInput.classList.toggle("border-green-500", valido);
+    correoInput.classList.toggle("ring-green-500", valido);
+    errorCorreo?.classList.toggle("hidden", valido);
+    return valido;
+  };
+
+  const validarMensaje = () => {
+    const valido = mensajeInput.value.trim().length > 3;
+    mensajeInput.classList.toggle("border-red-500", !valido);
+    mensajeInput.classList.toggle("ring-red-500", !valido);
+    mensajeInput.classList.toggle("border-green-500", valido);
+    mensajeInput.classList.toggle("ring-green-500", valido);
+    errorMensaje?.classList.toggle("hidden", valido);
+    return valido;
+  };
+
+  correoInput.addEventListener("input", validarCorreo);
+  mensajeInput.addEventListener("input", validarMensaje);
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    if (!validarCorreo() || !validarMensaje()) return;
+
+    const data = new FormData(form);
+    const res = await fetch(form.action, {
+      method: form.method,
+      body: data,
+      headers: { Accept: "application/json" },
+    });
+
+    if (res.ok && mensaje) {
+      form.reset();
+      mensaje.classList.remove("hidden");
+      setTimeout(() => mensaje.classList.add("hidden"), 5000);
     }
   });
+}
 
-  // Manejador de cambio de idioma
-  idiomasMenu.querySelectorAll("button[data-idioma]").forEach((btn) => {
+// Filtros del menú
+document.addEventListener("DOMContentLoaded", () => {
+  const filterButtons = document.querySelectorAll(".filter-btn");
+  const cards = document.querySelectorAll(".menu-card");
+
+  filterButtons.forEach((btn) => {
     btn.addEventListener("click", () => {
-      const idioma = btn.getAttribute("data-idioma");
-      cambiarIdioma(idioma);
+      // Remover clase activa de todos
+      filterButtons.forEach((b) =>
+        b.classList.remove("border-black", "font-bold")
+      );
+      btn.classList.add("border-black", "font-bold");
 
-      // Cambiar bandera actual visualmente
-      const banderaActual = document.getElementById("bandera-actual");
-      banderaActual.src =
-        idioma === "en"
-          ? "https://flagcdn.com/w40/gb.png"
-          : "https://flagcdn.com/w40/es.png";
+      const category = btn.dataset.category;
 
-      idiomasMenu.classList.add("hidden"); // Ocultar menú
+      cards.forEach((card) => {
+        const matches =
+          category === "all" || card.dataset.category === category;
+        card.style.display = matches ? "block" : "none";
+      });
     });
   });
+});
+
+// Cargar categoría desde URL y activar botón correspondiente
+document.addEventListener("DOMContentLoaded", () => {
+  const urlParams = new URLSearchParams(window.location.search);
+  const categoria = urlParams.get("categoria");
+
+  if (categoria) {
+    const boton = document.querySelector(`[data-category="${categoria}"]`);
+    if (boton) boton.click();
+  }
 });

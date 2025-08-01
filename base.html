@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <!-- Metadatos -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- SEO Básico -->
+    <title data-i18n="title">Restaurante | Up Develop</title>
+    <meta name="description" content="Sitio web moderno y responsive para restaurante. Menú, ubicación, contacto y más."
+        data-i18n="metaDescription" />
+    <meta name="keywords" content="restaurante, comida, menú, reservas, sitio web">
+    <meta name="author" content="Sergio Silva" />
+
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        rojo: '#e3342f',
+                        crema: '#fff8ec',
+                        vino: '#7b2c2c',
+                        dorado: '#d4af37',
+                        white: '#ffffff',
+                        neutral: {
+                            950: '#0a0a0a',
+                            900: '#171717',
+                            800: '#262626',
+                        },
+                        gray: {
+                            50: '#f9fafb',
+                            100: '#f3f4f6',
+                            200: '#e5e7eb',
+                            800: '#1f2937',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Íconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+        integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Favicon y App Icons -->
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/icons/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/icons/apple-touch-icon.png">
+    <link rel="icon" href="assets/icons/favicon.ico" type="image/x-icon">
+    <link rel="manifest" href="site.webmanifest" crossorigin="use-credentials">
+
+    <!-- Meta adicionales para PWA y móviles -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="Restaurante">
+    <meta name="application-name" content="Restaurante">
+    <meta name="theme-color" content="#ffffff">
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:wght@700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body class="font-sans text-gray-800 dark:text-gray-100 bg-white dark:bg-gray-950">
+
+    <!-- Navbar principal -->
+    <header
+        class="bg-white dark:bg-neutral-950 border-b border-gray-200 dark:border-gray-800 text-gray-800 dark:text-gray-100 transition-colors duration-300 ease-in-out shadow-md fixed w-full top-0 z-50">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
+            <!-- Logo y nombre -->
+            <a href="index.html" class="flex items-center space-x-2">
+                <img src="assets/icons/logo-light.png" alt="Logo Restaurante"
+                    class="h-10 sm:h-12 w-auto block dark:hidden" />
+                <img src="assets/icons/logo-dark.png" alt="Logo Restaurante"
+                    class="h-10 sm:h-12 w-auto hidden dark:block" />
+            </a>
+
+            <!-- Menú desktop -->
+            <ul class="hidden md:flex space-x-6 text-sm font-medium">
+                <li><a href="index.html" data-i18n="nav.inicio"
+                        class="px-4 py-2 hover:opacity-80 transition-opacity dark:hover:text-white">Inicio</a></li>
+                <li><a href="menu.html" data-i18n="nav.menu" class="hover:text-neutral-500 transition">Menú</a></li>
+                <li><a href="nosotros.html" data-i18n="nav.nosotros"
+                        class="hover:text-neutral-500 transition">Nosotros</a></li>
+                <li><a href="testimonios.html" data-i18n="nav.testimonios"
+                        class="hover:text-neutral-500 transition">Testimonios</a></li>
+                <li><a href="contacto.html" data-i18n="nav.contacto"
+                        class="hover:text-neutral-500 transition">Contacto</a></li>
+            </ul>
+
+            <!-- Íconos -->
+            <div class="flex items-center space-x-4">
+                <!-- Modo oscuro -->
+                <button id="theme-toggle"
+                    class="text-xl text-neutral-500 hover:text-neutral-900 dark:text-white dark:hover:text-neutral-500 transition-all"
+                    aria-label="Cambiar tema">
+                    <i id="theme-icon" class="fas fa-moon"></i>
+                </button>
+
+                <!-- Selector de idioma -->
+                <div class="relative group">
+                    <!-- Botón principal -->
+                    <button id="idioma-toggle"
+                        class="flex items-center gap-2 px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-white rounded shadow-sm hover:bg-gray-200 dark:hover:bg-gray-600 transition-all">
+                        <img id="bandera-actual" src="https://flagcdn.com/w40/es.png" alt="Idioma actual"
+                            class="w-[20px] h-[14px] object-cover" />
+                    </button>
+
+                    <!-- Menú de idiomas -->
+                    <div id="idiomas-menu"
+                        class="absolute right-0 mt-2 hidden bg-white dark:bg-gray-800 rounded shadow-lg p-2 z-50 w-32">
+                        <button data-idioma="es"
+                            class="flex items-center gap-2 px-2 py-1 rounded hover:bg-gray-100 dark:hover:bg-gray-700 w-full transition-all">
+                            <img src="https://flagcdn.com/w40/es.png" class="w-[20px] h-[14px] object-cover"
+                                alt="Español" />
+                            <span class="text-sm text-gray-800 dark:text-white">Español</span>
+                        </button>
+                        <button data-idioma="en"
+                            class="flex items-center gap-2 px-2 py-1 rounded hover:bg-gray-100 dark:hover:bg-gray-700 w-full transition-all">
+                            <img src="https://flagcdn.com/w40/gb.png" class="w-[20px] h-[14px] object-cover"
+                                alt="English" />
+                            <span class="text-sm text-gray-800 dark:text-white">English</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Hamburguesa -->
+                <button id="menuToggle"
+                    class="md:hidden text-2xl text-neutral-500 hover:text-neutral-900 dark:text-white dark:hover:text-neutral-500 focus:outline-none">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </nav>
+
+        <!-- Menú móvil (solo visible en móvil) -->
+        <ul id="mobileMenu" class="md:hidden flex flex-col items-end space-y-2 pr-6 pb-4 hidden">
+            <li><a href="index.html" data-i18n="nav.inicio" class="text-sm hover:text-neutral-500">Inicio</a></li>
+            <li><a href="menu.html" data-i18n="nav.menu" class="text-sm hover:text-neutral-500">Menú</a></li>
+            <li><a href="nosotros.html" data-i18n="nav.nosotros" class="text-sm hover:text-neutral-500">Nosotros</a>
+            </li>
+            <li><a href="testimonios.html" data-i18n="nav.testimonios"
+                    class="text-sm hover:text-neutral-500">Testimonios</a></li>
+            <li><a href="contacto.html" data-i18n="nav.contacto" class="text-sm hover:text-neutral-500">Contacto</a>
+            </li>
+        </ul>
+    </header>
+
+    <!-- Aquí va el contenido específico de cada página -->
+    <main class="py-20 bg-gray-50 dark:bg-neutral-800">
+        <!-- Contenido de cada sección irá aquí -->
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-neutral-900 dark:bg-neutral-950 text-white py-10">
+        <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-3 gap-8">
+            <!-- Enlaces -->
+            <div>
+                <h3 class="text-xl font-semibold mb-4" data-i18n="footer.enlaces">Enlaces</h3>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="index.html" class="hover:text-neutral-500 transition"
+                            data-i18n="footer.inicio">Inicio</a>
+                    </li>
+                    <li><a href="menu.html" class="hover:text-neutral-500 transition" data-i18n="footer.menu">Menú</a>
+                    </li>
+                    <li><a href="nosotros.html" class="hover:text-neutral-500 transition"
+                            data-i18n="footer.nosotros">Nosotros</a></li>
+                    <li><a href="testimonios.html" class="hover:text-neutral-500 transition"
+                            data-i18n="footer.testimonios">Testimonios</a></li>
+                    <li><a href="contacto.html" class="hover:text-neutral-500 transition"
+                            data-i18n="footer.contacto">Contacto</a></li>
+                </ul>
+            </div>
+
+            <!-- Contacto -->
+            <div>
+                <h3 class="text-xl font-semibold mb-4" data-i18n="footer.contacto">Contáctanos</h3>
+                <p class="text-sm" data-i18n="footer.direccion">Calle 123, Bogotá, Colombia</p>
+                <p class="text-sm" data-i18n="footer.telefono">Tel: +57 300 123 4567</p>
+                <p class="text-sm" data-i18n="footer.email">Email: info@restaurante.com</p>
+            </div>
+
+            <!-- Redes sociales -->
+            <div>
+                <h3 class="text-xl font-semibold mb-4" data-i18n="footer.siguenos">Síguenos</h3>
+                <div class="flex space-x-4">
+                    <a href="#" aria-label="Facebook" class="hover:text-neutral-500 text-xl"><i
+                            class="fab fa-facebook"></i></a>
+                    <a href="#" aria-label="Instagram" class="hover:text-neutral-500 text-xl"><i
+                            class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Twitter" class="hover:text-neutral-500 text-xl"><i
+                            class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-10 text-center text-sm text-gray-400" data-i18n="footer.derechos">
+            <!-- Contenido será reemplazado dinámicamente -->
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="js/main.js" defer></script>
+</body>
+
+</html>
